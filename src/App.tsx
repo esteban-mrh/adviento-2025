@@ -1,9 +1,8 @@
-import './App.css'
 import Calendar from './components/Calendar'
 
 function App() {
   return (
-    <div className="app">
+    <div className="w-full min-h-screen">
       <Calendar />
     </div>
   )

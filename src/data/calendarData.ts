@@ -1,3 +1,5 @@
+import type { CalendarData } from '../types/calendar';
+
 /**
  * Advent Calendar Data
  * Configure content for each day (1-24)
@@ -11,7 +13,7 @@
  * - custom: Custom component with mixed content
  */
 
-export const calendarData = {
+export const calendarData: CalendarData = {
   1: {
     type: 'text',
     content: {
