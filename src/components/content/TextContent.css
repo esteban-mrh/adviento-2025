@@ -1,0 +1,39 @@
+.text-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.text-message {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #5a3a4a;
+  white-space: pre-line;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+
+.text-decoration {
+  font-size: 2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-message {
+    font-size: 1.1rem;
+  }
+  
+  .text-decoration {
+    font-size: 1.5rem;
+  }
+}
