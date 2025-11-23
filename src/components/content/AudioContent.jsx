@@ -3,6 +3,7 @@ import './AudioContent.css';
 
 const AudioContent = ({ data }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const audioRef = useRef(null);
 
   const togglePlay = () => {
@@ -14,6 +15,10 @@ const AudioContent = ({ data }) => {
       }
       setIsPlaying(!isPlaying);
     }
+  };
+
+  const handleError = () => {
+    setHasError(true);
   };
 
   return (
@@ -28,27 +33,33 @@ const AudioContent = ({ data }) => {
         <p className="audio-description">{data.description}</p>
       )}
       
-      <div className="audio-player">
-        <button 
-          className={`play-button ${isPlaying ? 'playing' : ''}`}
-          onClick={togglePlay}
-        >
-          {isPlaying ? '⏸️' : '▶️'}
-        </button>
-        
-        <audio 
-          ref={audioRef}
-          src={data.url}
-          onEnded={() => setIsPlaying(false)}
-          onError={(e) => {
-            console.error('Error loading audio:', e);
-          }}
-        />
-      </div>
-      
-      <p className="audio-note">
-        {isPlaying ? 'Reproduciendo... 🎶' : 'Presiona para escuchar 🎧'}
-      </p>
+      {hasError ? (
+        <p className="audio-error">
+          ⚠️ No se pudo cargar el audio. Por favor, verifica que el archivo existe.
+        </p>
+      ) : (
+        <>
+          <div className="audio-player">
+            <button 
+              className={`play-button ${isPlaying ? 'playing' : ''}`}
+              onClick={togglePlay}
+            >
+              {isPlaying ? '⏸️' : '▶️'}
+            </button>
+            
+            <audio 
+              ref={audioRef}
+              src={data.url}
+              onEnded={() => setIsPlaying(false)}
+              onError={handleError}
+            />
+          </div>
+          
+          <p className="audio-note">
+            {isPlaying ? 'Reproduciendo... 🎶' : 'Presiona para escuchar 🎧'}
+          </p>
+        </>
+      )}
     </div>
   );
 };
