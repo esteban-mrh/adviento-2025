@@ -9,7 +9,7 @@
  * @param {number} month - Month (0-11, where 11 is December)
  * @returns {boolean} - True if the day can be opened
  */
-export const canOpenDay = (day, year = 2025, month = 11) => {
+export const canOpenDay = (day: number, year = 2025, month = 12) => {
   // DEMO MODE: Set to true to allow all days to be opened for testing
   const DEMO_MODE = true;
   
@@ -28,7 +28,7 @@ export const canOpenDay = (day, year = 2025, month = 11) => {
  * @param {number} month - Month (0-11)
  * @returns {string} - Formatted date string
  */
-export const formatDate = (day, month = 11) => {
+export const formatDate = (day: number, month = 12) => {
   const monthNames = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
@@ -43,13 +43,13 @@ export const formatDate = (day, month = 11) => {
  * @param {number} month - Month (0-11)
  * @returns {number} - Days remaining (0 if can open)
  */
-export const getDaysUntil = (day, year = 2025, month = 11) => {
+export const getDaysUntil = (day: number, year = 2025, month = 12) => {
   const now = new Date();
   const targetDate = new Date(year, month, day);
   
   if (now >= targetDate) return 0;
   
-  const diffTime = targetDate - now;
+  const diffTime = targetDate.getTime() - now.getTime();
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   
   return diffDays;
