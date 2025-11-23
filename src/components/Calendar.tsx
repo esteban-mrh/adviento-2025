@@ -3,7 +3,6 @@ import DayCard from './DayCard';
 import Modal from './Modal';
 import { canOpenDay } from '../utils/dateUtils';
 import { calendarData } from '../data/calendarData';
-import type { DayContent } from '../types/calendar';
 
 const Calendar = () => {
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
