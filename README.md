@@ -180,11 +180,25 @@ export const calendarData = {
 
 ## 🎨 Personalización de Estilos
 
-Los colores principales se definen en los archivos CSS de cada componente. Para cambiar el esquema de colores:
+Los colores principales están definidos en `tailwind.config.js`:
 
-- Rosa principal: `#d4576d`
-- Rosa claro: `#ffc4d6`, `#ffd4e5`, `#ffe4f0`
-- Dorado: `#ffd700` (usado sutilmente)
+```javascript
+colors: {
+  pink: {
+    primary: '#d4576d',
+    light: '#ffc4d6',
+    lighter: '#ffd4e5',
+    lightest: '#ffe4f0',
+    bg: '#fff5f8',
+    pale: '#ffeef5',
+  }
+}
+```
+
+Para personalizar:
+1. Modifica los colores en `tailwind.config.js`
+2. Usa las clases de Tailwind en los componentes (ej: `text-pink-primary`, `bg-pink-light`)
+3. Todas las animaciones están definidas en la configuración de Tailwind
 
 ## 🔒 Control de Acceso por Fecha
 
@@ -232,8 +246,10 @@ npm run build
 ## 🛠️ Tecnologías
 
 - **React 19**: Framework UI
+- **TypeScript**: Type safety and better developer experience
 - **Vite**: Build tool ultra rápido
-- **CSS3**: Animaciones y estilos personalizados
+- **Tailwind CSS**: Utility-first CSS framework
+- **PostCSS**: CSS processing
 - **ESLint**: Code quality
 
 ## 📄 Licencia
