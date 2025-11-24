@@ -80,7 +80,7 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
         transformOrigin: transformOrigin,
       }}
     >
-      {/* Loading animation overlay */}
+      {/* Loading animation overlay - only show during animation */}
       {!showContent && (
         <div className="absolute inset-0 flex items-center justify-center z-[60]">
           <div className="text-center">
@@ -92,19 +92,19 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
         </div>
       )}
 
-      <Card 
-        className={cn(
-          'relative w-full max-w-2xl max-h-[90vh] overflow-y-auto border-0',
-          'shadow-2xl shadow-gold/20',
-          showContent ? 'opacity-100' : 'opacity-0',
-          'transition-opacity duration-300',
-          'animate-scale-in'
-        )}
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          transformOrigin: transformOrigin,
-        }}
-      >
+      {/* Content Card - only render after animation completes */}
+      {showContent && (
+        <Card 
+          className={cn(
+            'relative w-full max-w-2xl max-h-[90vh] overflow-y-auto border-0',
+            'shadow-2xl shadow-gold/20',
+            'animate-scale-in'
+          )}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            transformOrigin: transformOrigin,
+          }}
+        >
         {/* Golden decorative corners */}
         <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-gold opacity-40 rounded-tl-xl"></div>
         <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-gold opacity-40 rounded-tr-xl"></div>
@@ -141,14 +141,12 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
           <p className="text-sm text-muted-foreground">Diciembre 2025</p>
         </div>
         
-        {/* Content with fade-in */}
-        <div className={cn(
-          "p-5 sm:p-6 text-gray-700 transition-opacity duration-500",
-          showContent ? "opacity-100" : "opacity-0"
-        )}>
-          {showContent && renderContent()}
+        {/* Content */}
+        <div className="p-5 sm:p-6 text-gray-700">
+          {renderContent()}
         </div>
       </Card>
+      )}
     </div>
   );
 };
