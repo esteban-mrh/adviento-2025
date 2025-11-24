@@ -131,9 +131,17 @@ Te prometo amarte cada día más.`
     }
   },
   14: {
-    type: 'text',
+    type: 'custom',
     content: {
-      message: '💌 Mensaje del día:\n\nEres la persona más increíble que conozco'
+      title: '9 Meses Juntos 💕',
+      items: [
+        '💖 9 meses de amor',
+        '😊 9 meses de risas',
+        '✨ 9 meses de momentos mágicos',
+        '🌹 9 meses de crecimiento',
+        '💑 9 meses de nosotros'
+      ],
+      specialMessage: 'Feliz "mothversario" Dome! Cada mes contigo es un regalo. Te amo más cada día. 💕'
     }
   },
   15: {
