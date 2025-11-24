@@ -157,10 +157,10 @@
     background: linear-gradient(135deg, #E8B4BE 0%, #F5D7DC 100%);
     color: white;
     position: absolute;
-    height: 100%;
-    z-index: 2;
+    height: 70%;
+    z-index: 1;
     transition: all 0.6s ease-in-out 0.3s;
-    top: 100%;
+    top: 55%;
     border-radius: 0.5rem;
     animation: letterSlideUp 0.6s ease-in-out 0.3s forwards;
   }
@@ -227,10 +227,10 @@
 
   @keyframes letterSlideUp {
     0% {
-      top: 100%;
+      top: 55%;
     }
     100% {
-      top: 0;
+      top: 10%;
     }
   }
 
