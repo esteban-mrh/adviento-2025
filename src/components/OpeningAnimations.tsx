@@ -8,9 +8,9 @@ interface AnimatedCardProps {
 export const AnimatedCard = ({ variant, className }: AnimatedCardProps) => {
   if (variant === 'card') {
     return (
-      <div className={cn("relative w-56 h-72 perspective-1000", className)}>
+      <div className={cn("relative w-56 h-72", className)} style={{ perspective: '1000px' }}>
         {/* Card opening animation - greeting card style */}
-        <div className="relative w-full h-full preserve-3d">
+        <div className="relative w-full h-full">
           {/* Back of card - stays fixed */}
           <div className="absolute inset-0 bg-gradient-to-br from-pink-lighter via-pink-light to-pink-primary rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
             {/* Decorative pattern on back */}
@@ -38,8 +38,8 @@ export const AnimatedCard = ({ variant, className }: AnimatedCardProps) => {
             <div className="opacity-0 animate-content-reveal">
               <div className="relative">
                 <div className="text-8xl animate-gentle-bounce">✨</div>
-                <div className="absolute -top-6 -left-8 text-gold text-5xl animate-twinkle" style={{ animationDelay: '0.3s' }}>✨</div>
-                <div className="absolute -top-6 -right-8 text-gold-light text-5xl animate-twinkle" style={{ animationDelay: '0.4s' }}>✨</div>
+                <div className="absolute -top-6 -left-8 text-gold text-5xl animate-twinkle delay-300">✨</div>
+                <div className="absolute -top-6 -right-8 text-gold-light text-5xl animate-twinkle delay-400">✨</div>
               </div>
             </div>
           </div>
@@ -80,9 +80,9 @@ export const AnimatedCard = ({ variant, className }: AnimatedCardProps) => {
                 <div className="absolute -right-6 top-2 w-10 h-8 bg-gold rounded-full transform rotate-45" />
                 {/* Center knot */}
                 <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-gold-dark rounded-full shadow-lg" />
-                {/* Ribbon tails */}
-                <div className="absolute top-8 -left-2 w-4 h-8 bg-gold transform rotate-12" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
-                <div className="absolute top-8 -right-2 w-4 h-8 bg-gold transform -rotate-12" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
+                {/* Ribbon tails - using inline triangles */}
+                <div className="absolute top-8 -left-2 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[32px] border-l-transparent border-r-transparent border-t-gold transform rotate-12" />
+                <div className="absolute top-8 -right-2 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[32px] border-l-transparent border-r-transparent border-t-gold transform -rotate-12" />
               </div>
             </div>
           </div>
@@ -92,11 +92,11 @@ export const AnimatedCard = ({ variant, className }: AnimatedCardProps) => {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="opacity-0 animate-content-reveal">
             <div className="relative">
-              <div className="text-8xl animate-gentle-bounce" style={{ animationDelay: '0.2s' }}>🎁</div>
-              <div className="absolute -top-8 -left-12 text-6xl animate-twinkle" style={{ animationDelay: '0.3s' }}>✨</div>
-              <div className="absolute -top-8 -right-12 text-6xl animate-twinkle" style={{ animationDelay: '0.4s' }}>✨</div>
-              <div className="absolute top-16 -left-8 text-4xl animate-sparkle" style={{ animationDelay: '0.5s' }}>💕</div>
-              <div className="absolute top-16 -right-8 text-4xl animate-sparkle" style={{ animationDelay: '0.5s' }}>💕</div>
+              <div className="text-8xl animate-gentle-bounce delay-200">🎁</div>
+              <div className="absolute -top-8 -left-12 text-6xl animate-twinkle delay-300">✨</div>
+              <div className="absolute -top-8 -right-12 text-6xl animate-twinkle delay-400">✨</div>
+              <div className="absolute top-16 -left-8 text-4xl animate-sparkle delay-500">💕</div>
+              <div className="absolute top-16 -right-8 text-4xl animate-sparkle delay-500">💕</div>
             </div>
           </div>
         </div>

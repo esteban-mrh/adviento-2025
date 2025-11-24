@@ -268,8 +268,11 @@ export default {
       perspective: {
         '1000': '1000px',
       },
-      transformStyle: {
-        'preserve-3d': 'preserve-3d',
+      animationDelay: {
+        '200': '200ms',
+        '300': '300ms',
+        '400': '400ms',
+        '500': '500ms',
       },
     },
   },
