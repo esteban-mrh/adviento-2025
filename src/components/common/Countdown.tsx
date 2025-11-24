@@ -3,9 +3,6 @@ import { Card } from '../ui/card';
 import { cn } from '@/lib/utils';
 import { SparkleIcon } from './Icons';
 
-// UTC-5 offset in milliseconds (Ecuador/Guayaquil timezone)
-const UTC_MINUS_5_OFFSET = -5 * 60 * 60 * 1000;
-
 interface TimeRemaining {
   days: number;
   hours: number;
@@ -15,50 +12,16 @@ interface TimeRemaining {
 }
 
 /**
- * Get the current time adjusted for UTC-5 timezone
- */
-const getTimeInUTCMinus5 = (): Date => {
-  const now = new Date();
-  // Get UTC time, then add the UTC-5 offset
-  const utcTime = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
-  return new Date(utcTime + UTC_MINUS_5_OFFSET);
-};
-
-/**
- * Calculate time remaining until target date in UTC-5 timezone
- * Target: December 1st, 2025 at 00:00:00 UTC-5
+ * Calculate time remaining until December 1st, 2025 at 00:00:00 in Ecuador timezone (UTC-5)
+ * Uses UTC timestamps for accurate cross-timezone handling
  */
 const calculateTimeRemaining = (): TimeRemaining => {
-  // Target date: December 1st, 2025 at 00:00:00 in UTC-5
-  // We need to create this date properly for comparison
-  const targetYear = 2025;
-  const targetMonth = 11; // December (0-indexed)
-  const targetDay = 1;
+  // December 1st, 2025 00:00:00 in UTC-5 is December 1st, 2025 05:00:00 UTC
+  // We use a fixed UTC timestamp for the target to ensure consistency across all timezones
+  const targetUTC = Date.UTC(2025, 11, 1, 5, 0, 0, 0); // Dec 1, 2025 00:00 Ecuador time = 05:00 UTC
+  const nowUTC = Date.now();
   
-  const nowInUTCMinus5 = getTimeInUTCMinus5();
-  
-  // Create target date in UTC-5 context
-  const targetDateInUTCMinus5 = new Date(targetYear, targetMonth, targetDay, 0, 0, 0, 0);
-  
-  // Calculate the difference based on the current time in UTC-5
-  const currentYearInUTCMinus5 = nowInUTCMinus5.getFullYear();
-  const currentMonthInUTCMinus5 = nowInUTCMinus5.getMonth();
-  const currentDayInUTCMinus5 = nowInUTCMinus5.getDate();
-  const currentHoursInUTCMinus5 = nowInUTCMinus5.getHours();
-  const currentMinutesInUTCMinus5 = nowInUTCMinus5.getMinutes();
-  const currentSecondsInUTCMinus5 = nowInUTCMinus5.getSeconds();
-  
-  // Create a comparable date object for now in the same reference frame
-  const nowComparable = new Date(
-    currentYearInUTCMinus5,
-    currentMonthInUTCMinus5,
-    currentDayInUTCMinus5,
-    currentHoursInUTCMinus5,
-    currentMinutesInUTCMinus5,
-    currentSecondsInUTCMinus5
-  );
-  
-  const total = targetDateInUTCMinus5.getTime() - nowComparable.getTime();
+  const total = targetUTC - nowUTC;
   
   if (total <= 0) {
     return { days: 0, hours: 0, minutes: 0, seconds: 0, total: 0 };
@@ -130,7 +93,7 @@ const Countdown = (): JSX.Element | null => {
               )}>
                 ¡Cuenta regresiva!
               </h2>
-              <SparkleIcon className="w-5 h-5 text-gold animate-sparkle" style={{ animationDelay: '0.5s' }} />
+              <SparkleIcon className="w-5 h-5 text-gold animate-twinkle" />
             </div>
             <p className="text-sm sm:text-base text-pink-primary/70">
               Tiempo restante para el 1 de diciembre
