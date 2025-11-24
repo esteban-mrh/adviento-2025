@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { announcementMessages } from '../data/messages';
+import { announcementMessages } from '../../data/messages';
 import { Megaphone } from 'lucide-react';
-import { Card } from './ui/card';
+import { Card } from '../ui/card';
 import { cn } from '@/lib/utils';
 
 const AnnouncementBanner = (): JSX.Element | null => {

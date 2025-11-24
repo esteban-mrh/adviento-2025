@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
-import TextContent from './content/TextContent';
-import LetterContent from './content/LetterContent';
-import PhotoContent from './content/PhotoContent';
-import AudioContent from './content/AudioContent';
-import VideoContent from './content/VideoContent';
-import URLContent from './content/URLContent';
-import CustomContent from './content/CustomContent';
-import type { DayContent } from '../types/calendar';
+import {
+  TextContent,
+  LetterContent,
+  PhotoContent,
+  AudioContent,
+  VideoContent,
+  URLContent,
+  CustomContent,
+} from './content';
+import type { DayContent } from '../../types/calendar';
 import { X, Heart } from 'lucide-react';
-import { Card } from './ui/card';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
+import { Card } from '../ui/card';
+import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
 import { cn } from '@/lib/utils';
 import { AnimatedCard } from './OpeningAnimations';
 

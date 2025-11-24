@@ -1,4 +1,4 @@
-import type { CustomContent as CustomContentType } from '../../types/calendar';
+import type { CustomContent as CustomContentType } from '../../../types/calendar';
 import { Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 

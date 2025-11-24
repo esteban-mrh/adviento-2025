@@ -1,4 +1,4 @@
-import type { LetterContent as LetterContentType } from '../../types/calendar';
+import type { LetterContent as LetterContentType } from '../../../types/calendar';
 import { Flower2, Sparkles, Heart } from 'lucide-react';
 
 interface LetterContentProps {

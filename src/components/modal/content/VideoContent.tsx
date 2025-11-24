@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import type { VideoContent as VideoContentType } from '../../types/calendar';
+import type { VideoContent as VideoContentType } from '../../../types/calendar';
 import { Video, AlertTriangle, Popcorn, Sparkles } from 'lucide-react';
 
 interface VideoContentProps {

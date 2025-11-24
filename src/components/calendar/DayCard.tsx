@@ -1,5 +1,5 @@
-import { LockIcon, SparkleIcon, HeartIcon } from './Icons';
-import { Card } from './ui/card';
+import { LockIcon, SparkleIcon, HeartIcon } from '../common';
+import { Card } from '../ui/card';
 import { cn } from '@/lib/utils';
 
 interface DayCardProps {

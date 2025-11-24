@@ -1,4 +1,4 @@
-import type { TextContent as TextContentType } from '../../types/calendar';
+import type { TextContent as TextContentType } from '../../../types/calendar';
 import { Heart } from 'lucide-react';
 
 interface TextContentProps {
