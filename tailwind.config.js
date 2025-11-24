@@ -49,20 +49,28 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         pink: {
-          primary: '#E8B4BE',
-          light: '#F5D7DC',
-          lighter: '#FAE6EA',
-          lightest: '#FDF2F4',
-          bg: '#FEF9FA',
-          pale: '#FFF5F7',
+          primary: '#D4919A',      // Rosa principal más profundo y legible
+          light: '#E8B4BC',        // Rosa claro cálido
+          lighter: '#F2D4D8',      // Rosa muy claro
+          lightest: '#F9E8EA',     // Rosa casi blanco
+          bg: '#FDF5F6',           // Fondo rosado suave
+          pale: '#FFF8F9',         // Rosa pálido
+          warm: '#E09AA3',         // Rosa cálido intermedio
         },
         gold: {
-          DEFAULT: '#E5D4C1',
-          light: '#F0E8DC',
-          lighter: '#F7F2EA',
-          dark: '#D4C4AE',
-          darker: '#C2B29C',
-          shimmer: '#F5EDE0',
+          DEFAULT: '#C9A86C',      // Dorado principal más visible
+          light: '#DFC392',        // Dorado claro
+          lighter: '#EBD9B4',      // Dorado muy claro
+          lightest: '#F5ECD8',     // Dorado casi crema
+          dark: '#B8944D',         // Dorado oscuro para contraste
+          darker: '#9F7F3E',       // Dorado muy oscuro
+          shimmer: '#E8D5A8',      // Dorado para efectos shimmer
+          warm: '#D4B07A',         // Dorado cálido intermedio
+        },
+        warm: {
+          cream: '#FFF9F0',        // Crema cálido
+          ivory: '#FFFBF5',        // Marfil
+          blush: '#FFF0EB',        // Rubor cálido
         }
       },
       borderRadius: {

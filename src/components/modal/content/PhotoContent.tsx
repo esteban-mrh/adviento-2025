@@ -11,7 +11,7 @@ interface PhotoContentProps {
 const PhotoContent = ({ data }: PhotoContentProps) => {
   return (
     <div className="text-center py-5">
-      <div className="relative inline-block bg-white p-5 rounded-2xl shadow-lg shadow-pink-primary/20 mb-5 border-4 border-pink-light/50">
+      <div className="relative inline-block bg-warm-cream p-5 rounded-2xl shadow-lg shadow-gold/20 mb-5 border-4 border-gold-light/50">
         <img 
           src={data.url} 
           alt={data.caption || 'Foto especial'} 
@@ -22,21 +22,21 @@ const PhotoContent = ({ data }: PhotoContentProps) => {
         />
         
         {/* Decorative corners */}
-        <div className="absolute top-2.5 left-2.5 w-8 h-8 border-t-4 border-l-4 border-pink-primary rounded-tl-md pointer-events-none"></div>
-        <div className="absolute top-2.5 right-2.5 w-8 h-8 border-t-4 border-r-4 border-pink-primary rounded-tr-md pointer-events-none"></div>
-        <div className="absolute bottom-2.5 left-2.5 w-8 h-8 border-b-4 border-l-4 border-pink-primary rounded-bl-md pointer-events-none"></div>
-        <div className="absolute bottom-2.5 right-2.5 w-8 h-8 border-b-4 border-r-4 border-pink-primary rounded-br-md pointer-events-none"></div>
+        <div className="absolute top-2.5 left-2.5 w-8 h-8 border-t-4 border-l-4 border-gold rounded-tl-md pointer-events-none"></div>
+        <div className="absolute top-2.5 right-2.5 w-8 h-8 border-t-4 border-r-4 border-gold rounded-tr-md pointer-events-none"></div>
+        <div className="absolute bottom-2.5 left-2.5 w-8 h-8 border-b-4 border-l-4 border-gold rounded-bl-md pointer-events-none"></div>
+        <div className="absolute bottom-2.5 right-2.5 w-8 h-8 border-b-4 border-r-4 border-gold rounded-br-md pointer-events-none"></div>
       </div>
       
       {data.caption && (
-        <p className="text-lg md:text-xl text-gray-700 italic my-4 font-medium">
+        <p className="text-lg md:text-xl text-pink-primary/85 italic my-4 font-medium">
           {data.caption}
         </p>
       )}
       
       <div className="flex items-center justify-center gap-2 mt-4">
         <Heart className="w-6 h-6 text-pink-primary animate-float" />
-        <Sparkles className="w-6 h-6 text-pink-primary animate-float" style={{ animationDelay: '0.5s' }} />
+        <Sparkles className="w-6 h-6 text-gold animate-float" style={{ animationDelay: '0.5s' }} />
       </div>
     </div>
   );
