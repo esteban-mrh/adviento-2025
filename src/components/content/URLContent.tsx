@@ -37,7 +37,7 @@ const URLContent = ({ data }: URLContentProps) => {
           style={{
             background: 'linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%)',
             backgroundSize: '200% 200%',
-            animation: 'shimmer 2s ease-in-out infinite'
+            animation: 'shimmer 1.5s ease-in-out infinite'
           }}
         />
         

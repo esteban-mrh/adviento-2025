@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import type { VideoContent as VideoContentType } from '../../types/calendar';
 
 interface VideoContentProps {
@@ -22,55 +22,60 @@ const VideoContent = ({ data }: VideoContentProps) => {
     return match ? match[1] : null;
   };
 
-  const renderVideo = () => {
+  const videoEmbed = useMemo(() => {
     const platform = data.platform || 'youtube';
     
     if (platform === 'youtube') {
       const videoId = getYouTubeId(data.url);
       if (!videoId) {
-        setHasError(true);
-        return null;
+        return { error: true };
       }
-      return (
-        <iframe
-          className="w-full aspect-video rounded-xl shadow-lg"
-          src={`https://www.youtube.com/embed/${videoId}`}
-          title={data.title || 'Video'}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      );
+      return {
+        error: false,
+        component: (
+          <iframe
+            className="w-full aspect-video rounded-xl shadow-lg border-0"
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title={data.title || 'Video'}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        )
+      };
     } else if (platform === 'vimeo') {
       const videoId = getVimeoId(data.url);
       if (!videoId) {
-        setHasError(true);
-        return null;
+        return { error: true };
       }
-      return (
-        <iframe
-          className="w-full aspect-video rounded-xl shadow-lg"
-          src={`https://player.vimeo.com/video/${videoId}`}
-          title={data.title || 'Video'}
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-        />
-      );
+      return {
+        error: false,
+        component: (
+          <iframe
+            className="w-full aspect-video rounded-xl shadow-lg border-0"
+            src={`https://player.vimeo.com/video/${videoId}`}
+            title={data.title || 'Video'}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
+        )
+      };
     } else {
       // Direct video URL
-      return (
-        <video
-          className="w-full aspect-video rounded-xl shadow-lg"
-          controls
-          onError={() => setHasError(true)}
-        >
-          <source src={data.url} type="video/mp4" />
-          Tu navegador no soporta la reproducción de video.
-        </video>
-      );
+      return {
+        error: false,
+        component: (
+          <video
+            className="w-full aspect-video rounded-xl shadow-lg"
+            controls
+            onError={() => setHasError(true)}
+          >
+            <source src={data.url} type="video/mp4" />
+            Tu navegador no soporta la reproducción de video.
+          </video>
+        )
+      };
     }
-  };
+  }, [data.url, data.platform, data.title]);
 
   return (
     <div className="text-center py-5">
@@ -90,14 +95,14 @@ const VideoContent = ({ data }: VideoContentProps) => {
         </p>
       )}
       
-      {hasError ? (
+      {hasError || videoEmbed.error ? (
         <p className="text-base text-pink-primary font-semibold my-8 p-5 bg-pink-primary/10 rounded-2xl border-2 border-dashed border-pink-primary">
           ⚠️ No se pudo cargar el video. Por favor, verifica que la URL es correcta.
         </p>
       ) : (
         <div className="my-8 relative">
           <div className="relative inline-block w-full max-w-3xl bg-white p-3 rounded-2xl shadow-lg shadow-pink-primary/20 border-2 border-pink-light/50">
-            {renderVideo()}
+            {videoEmbed.component}
           </div>
         </div>
       )}
