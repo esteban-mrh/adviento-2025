@@ -7,11 +7,12 @@ import VideoContent from './content/VideoContent';
 import URLContent from './content/URLContent';
 import CustomContent from './content/CustomContent';
 import type { DayContent } from '../types/calendar';
-import { X, Heart, Gift, Mail, Sparkles } from 'lucide-react';
+import { X, Heart } from 'lucide-react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { cn } from '@/lib/utils';
+import { AnimatedCard } from './OpeningAnimations';
 
 interface ModalProps {
   isOpen: boolean;
@@ -22,20 +23,13 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) => {
-  // Random animation variant for each opening - computed once per modal instance
-  // useState with function initializer ensures this only runs once on mount
-  const [animationVariant] = useState(() => {
-    const variants = ['envelope-open', 'gift-unwrap', 'letter-unfold'];
-    return variants[Math.floor(Math.random() * variants.length)];
-  });
-
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      // Delay content appearance for animation effect
-      const timer = setTimeout(() => setShowContent(true), 400);
+      // Delay content appearance for animation effect - 1200ms to match envelope animation
+      const timer = setTimeout(() => setShowContent(true), 1200);
       return () => {
         clearTimeout(timer);
         document.body.style.overflow = 'unset';
@@ -78,20 +72,6 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
 
   const isSpecialDay = day === 14;
 
-  // Icon based on animation variant
-  const getAnimationIcon = () => {
-    switch (animationVariant) {
-      case 'envelope-open':
-        return <Mail className="w-16 h-16 text-gold" />;
-      case 'gift-unwrap':
-        return <Gift className="w-16 h-16 text-pink-primary" />;
-      case 'letter-unfold':
-        return <Sparkles className="w-16 h-16 text-gold-dark" />;
-      default:
-        return <Mail className="w-16 h-16 text-gold" />;
-    }
-  };
-
   return (
     <div 
       className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-4 animate-fadeIn"
@@ -103,12 +83,10 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
       {/* Loading animation overlay */}
       {!showContent && (
         <div className="absolute inset-0 flex items-center justify-center z-[60]">
-          <div className="text-center animate-scale-in">
-            {getAnimationIcon()}
-            <p className="mt-4 text-white text-lg font-semibold animate-fade-pulse">
-              {animationVariant === 'envelope-open' && 'Abriendo sobre...'}
-              {animationVariant === 'gift-unwrap' && 'Desenvolviendo regalo...'}
-              {animationVariant === 'letter-unfold' && 'Desplegando carta...'}
+          <div className="text-center">
+            <AnimatedCard />
+            <p className="mt-8 text-white text-lg font-semibold animate-fade-pulse">
+              Abriendo sobre...
             </p>
           </div>
         </div>
@@ -120,7 +98,7 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
           'shadow-2xl shadow-gold/20',
           showContent ? 'opacity-100' : 'opacity-0',
           'transition-opacity duration-300',
-          `animate-${animationVariant}`
+          'animate-scale-in'
         )}
         onClick={(e) => e.stopPropagation()}
         style={{
