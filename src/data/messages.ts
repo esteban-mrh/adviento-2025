@@ -4,11 +4,26 @@
  * Easy-to-edit file for announcement banner messages.
  * Messages will rotate automatically in the banner.
  * 
- * Instructions:
- * - Add or edit messages in the array below
- * - Each message supports text and emojis
- * - Messages will cycle through automatically
- * - Commit changes to update the banner on GitHub Pages
+ * 📝 HOW TO UPDATE:
+ * 1. Edit the messages in the array below
+ * 2. Add, remove, or modify messages as needed
+ * 3. Save this file
+ * 4. Commit and push changes: `git add . && git commit -m "Update messages" && git push`
+ * 5. Changes will appear on GitHub Pages after deployment (usually a few minutes)
+ * 
+ * 💡 TIPS:
+ * - Each message supports text and emojis (💕 🎄 ✨ 💖 🎁)
+ * - Messages automatically rotate every 8 seconds
+ * - Keep messages concise for better readability
+ * - Use \n for line breaks if needed (example: 'Line 1\nLine 2')
+ * - Empty array [] will hide the banner completely
+ * 
+ * EXAMPLES:
+ * export const announcementMessages: string[] = [
+ *   '🎄 Welcome message here!',
+ *   'Multi-line message\nwith a second line',
+ *   '💕 Another message with emoji',
+ * ];
  */
 
 export const announcementMessages: string[] = [
