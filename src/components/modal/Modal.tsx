@@ -24,7 +24,7 @@ interface ModalProps {
   originPosition?: { x: number; y: number } | null;
 }
 
-const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) => {
+const Modal = ({ isOpen, onClose, day, content, originPosition: _originPosition }: ModalProps) => {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
@@ -43,11 +43,6 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
   }, [isOpen]);
 
   if (!isOpen) return null;
-
-  // Calculate transform origin for animation
-  const transformOrigin = originPosition 
-    ? `${originPosition.x}px ${originPosition.y}px`
-    : 'center center';
 
   const renderContent = () => {
     if (!content) return null;
@@ -78,9 +73,6 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
     <div 
       className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-4 animate-fadeIn"
       onClick={onClose}
-      style={{
-        transformOrigin: transformOrigin,
-      }}
     >
       {/* Loading animation overlay - only show during animation */}
       {!showContent && (
@@ -95,6 +87,7 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
       )}
 
       {/* Content Card - only render after animation completes */}
+      {/* Content animates from center where the mini-carta (AnimatedCard) was displayed */}
       {showContent && (
         <Card 
           className={cn(
@@ -103,9 +96,6 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
             'animate-scale-in'
           )}
           onClick={(e) => e.stopPropagation()}
-          style={{
-            transformOrigin: transformOrigin,
-          }}
         >
         {/* Golden decorative corners */}
         <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-gold opacity-40 rounded-tl-xl"></div>
