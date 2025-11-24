@@ -39,13 +39,13 @@ const AudioContent = ({ data }: AudioContentProps) => {
       )}
       
       {data.description && (
-        <p className="text-lg text-gray-700 my-4 italic">
+        <p className="text-lg text-pink-primary/80 my-4 italic">
           {data.description}
         </p>
       )}
       
       {hasError ? (
-        <div className="text-base text-pink-primary font-semibold my-8 p-5 bg-pink-primary/10 rounded-2xl border-2 border-dashed border-pink-primary flex items-center justify-center gap-2">
+        <div className="text-base text-pink-primary font-semibold my-8 p-5 bg-pink-lighter/50 rounded-2xl border-2 border-dashed border-pink-primary flex items-center justify-center gap-2">
           <AlertTriangle className="w-5 h-5" />
           <span>No se pudo cargar el audio. Por favor, verifica que el archivo existe.</span>
         </div>
@@ -55,9 +55,9 @@ const AudioContent = ({ data }: AudioContentProps) => {
             <Button
               size="icon"
               className={cn(
-                'w-20 h-20 rounded-full bg-gradient-to-br from-pink-light to-pink-primary',
+                'w-20 h-20 rounded-full bg-gradient-to-br from-pink-light via-pink-primary to-gold',
                 'shadow-lg shadow-pink-primary/40 transition-all duration-300',
-                'hover:scale-110 hover:shadow-xl hover:shadow-pink-primary/60',
+                'hover:scale-110 hover:shadow-xl hover:shadow-gold/40',
                 'active:scale-95',
                 isPlaying && 'animate-ripple'
               )}

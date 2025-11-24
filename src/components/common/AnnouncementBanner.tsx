@@ -32,13 +32,13 @@ const AnnouncementBanner = (): JSX.Element | null => {
 
   return (
     <div className="max-w-4xl mx-auto mt-12 mb-8 relative z-10 px-4 sm:px-0">
-      <Card className="bg-gradient-to-r from-pink-50 via-pink-50/80 to-purple-50/80 border-pink-200/50 overflow-hidden backdrop-blur-sm">
+      <Card className="bg-gradient-to-r from-pink-lightest via-warm-cream to-gold-lightest border-gold-light/50 overflow-hidden backdrop-blur-sm">
         {/* Content */}
         <div className="relative px-4 py-4 md:px-6 md:py-5">
           <div className="flex items-start gap-3 md:gap-4">
             {/* Icon */}
             <div className="flex-shrink-0 mt-0.5">
-              <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-pink-primary/10 flex items-center justify-center">
+              <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-pink-light/30 to-gold-light/30 flex items-center justify-center">
                 <Megaphone className="w-5 h-5 md:w-6 md:h-6 text-pink-primary" />
               </div>
             </div>
@@ -47,7 +47,7 @@ const AnnouncementBanner = (): JSX.Element | null => {
             <div className="flex-1 min-w-0">
               <div 
                 className={cn(
-                  'text-pink-primary/90 text-sm md:text-base leading-relaxed transition-opacity duration-300',
+                  'text-pink-primary text-sm md:text-base leading-relaxed transition-opacity duration-300',
                   isVisible ? 'opacity-100' : 'opacity-0'
                 )}
               >
@@ -70,8 +70,8 @@ const AnnouncementBanner = (): JSX.Element | null => {
                       className={cn(
                         'w-2 h-2 rounded-full transition-all duration-300',
                         index === currentMessageIndex 
-                          ? 'bg-pink-primary w-6' 
-                          : 'bg-pink-primary/30 hover:bg-pink-primary/50'
+                          ? 'bg-gradient-to-r from-pink-primary to-gold w-6' 
+                          : 'bg-pink-light/50 hover:bg-pink-primary/50'
                       )}
                       aria-label={`Ver mensaje ${index + 1}`}
                     />

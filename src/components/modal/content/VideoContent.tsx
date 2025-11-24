@@ -89,19 +89,19 @@ const VideoContent = ({ data }: VideoContentProps) => {
       )}
       
       {data.description && (
-        <p className="text-lg text-gray-700 my-4 italic">
+        <p className="text-lg text-pink-primary/80 my-4 italic">
           {data.description}
         </p>
       )}
       
       {hasError || videoEmbed.error ? (
-        <div className="text-base text-pink-primary font-semibold my-8 p-5 bg-pink-primary/10 rounded-2xl border-2 border-dashed border-pink-primary flex items-center justify-center gap-2">
+        <div className="text-base text-pink-primary font-semibold my-8 p-5 bg-pink-lighter/50 rounded-2xl border-2 border-dashed border-pink-primary flex items-center justify-center gap-2">
           <AlertTriangle className="w-5 h-5" />
           <span>No se pudo cargar el video. Por favor, verifica que la URL es correcta.</span>
         </div>
       ) : (
         <div className="my-8 relative">
-          <div className="relative inline-block w-full max-w-3xl bg-white p-3 rounded-2xl shadow-lg shadow-pink-primary/20 border-2 border-pink-light/50">
+          <div className="relative inline-block w-full max-w-3xl bg-warm-cream p-3 rounded-2xl shadow-lg shadow-gold/20 border-2 border-gold-light/50">
             {videoEmbed.component}
           </div>
         </div>
@@ -109,7 +109,7 @@ const VideoContent = ({ data }: VideoContentProps) => {
       
       <div className="flex items-center justify-center gap-2 mt-4">
         <Popcorn className="w-6 h-6 text-pink-primary animate-float" />
-        <Sparkles className="w-6 h-6 text-pink-primary animate-float" style={{ animationDelay: '0.5s' }} />
+        <Sparkles className="w-6 h-6 text-gold animate-float" style={{ animationDelay: '0.5s' }} />
       </div>
     </div>
   );

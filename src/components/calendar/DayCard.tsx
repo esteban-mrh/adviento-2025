@@ -17,8 +17,8 @@ const DayCard = ({ day, canOpen, onClick }: DayCardProps) => {
       className={cn(
         'relative aspect-square transition-all duration-500 flex items-center justify-center overflow-hidden group cursor-pointer border-0',
         canOpen 
-          ? 'bg-gradient-to-br from-pink-light via-pink-lighter via-gold-lighter/40 to-white shadow-lg hover:shadow-2xl hover:shadow-gold/40 hover:scale-105' 
-          : 'bg-gradient-to-br from-gray-200 via-gray-100 to-white cursor-not-allowed opacity-50 shadow-md'
+          ? 'bg-gradient-to-br from-pink-lightest via-warm-cream to-gold-lightest shadow-lg hover:shadow-2xl hover:shadow-gold/30 hover:scale-105' 
+          : 'bg-gradient-to-br from-gray-100 via-gray-50 to-white cursor-not-allowed opacity-50 shadow-md'
       )}
       onClick={canOpen ? onClick : undefined}
     >
@@ -27,7 +27,7 @@ const DayCard = ({ day, canOpen, onClick }: DayCardProps) => {
         <>
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                style={{
-                 background: 'linear-gradient(135deg, transparent 0%, rgba(255, 215, 0, 0.3) 30%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 215, 0, 0.3) 70%, transparent 100%)',
+                 background: 'linear-gradient(135deg, transparent 0%, rgba(201, 168, 108, 0.25) 30%, rgba(255, 255, 255, 0.5) 50%, rgba(201, 168, 108, 0.25) 70%, transparent 100%)',
                  backgroundSize: '200% 200%',
                  animation: 'shimmer 2s ease-in-out infinite'
                }}>
@@ -35,7 +35,7 @@ const DayCard = ({ day, canOpen, onClick }: DayCardProps) => {
           {/* Subtle golden border glow */}
           <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                style={{
-                 boxShadow: 'inset 0 0 20px rgba(255, 215, 0, 0.2)'
+                 boxShadow: 'inset 0 0 20px rgba(201, 168, 108, 0.25)'
                }}>
           </div>
         </>
@@ -61,7 +61,7 @@ const DayCard = ({ day, canOpen, onClick }: DayCardProps) => {
 
       {/* Hover overlay with gradient - positioned absolutely so it doesn't affect layout */}
       {canOpen && (
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-primary via-pink-primary/95 to-gold-dark/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-sm z-20 rounded-xl">
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-primary via-pink-warm to-gold opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-sm z-20 rounded-xl">
           <div className="flex items-center gap-2 text-white group-hover:animate-gentle-bounce">
             {isSpecialDay ? (
               <HeartIcon className="w-6 h-6" />

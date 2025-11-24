@@ -38,17 +38,17 @@ const Calendar = () => {
   const days = Array.from({ length: 24 }, (_, i) => i + 1);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50/40 via-rose-50/30 via-amber-50/20 to-blue-50/30 px-3 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
-      {/* Enhanced background with golden sparkles */}
-      <div className="absolute inset-0 pointer-events-none opacity-40">
+    <div className="min-h-screen bg-gradient-to-br from-warm-cream via-pink-bg to-gold-lightest px-3 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
+      {/* Enhanced background with warm golden and pink accents */}
+      <div className="absolute inset-0 pointer-events-none opacity-50">
         <div className="absolute top-0 left-0 w-full h-full" 
              style={{
                backgroundImage: `
-                 radial-gradient(circle at 25% 25%, rgba(255, 192, 203, 0.2) 0%, transparent 50%),
-                 radial-gradient(circle at 75% 75%, rgba(216, 180, 254, 0.2) 0%, transparent 50%),
-                 radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.15) 0%, transparent 60%),
-                 radial-gradient(circle at 10% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
-                 radial-gradient(circle at 90% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 40%)
+                 radial-gradient(circle at 20% 20%, rgba(212, 145, 154, 0.15) 0%, transparent 45%),
+                 radial-gradient(circle at 80% 80%, rgba(201, 168, 108, 0.12) 0%, transparent 45%),
+                 radial-gradient(circle at 50% 50%, rgba(232, 180, 188, 0.1) 0%, transparent 55%),
+                 radial-gradient(circle at 10% 70%, rgba(201, 168, 108, 0.08) 0%, transparent 35%),
+                 radial-gradient(circle at 90% 30%, rgba(232, 180, 188, 0.08) 0%, transparent 35%)
                `,
              }}>
         </div>

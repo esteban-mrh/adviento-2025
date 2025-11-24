@@ -71,7 +71,7 @@ const Modal = ({ isOpen, onClose, day, content, originPosition: _originPosition 
 
   return (
     <div 
-      className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-4 animate-fadeIn"
+      className="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-4 animate-fadeIn"
       onClick={onClose}
     >
       {/* Loading animation overlay - only show during animation */}
@@ -114,27 +114,27 @@ const Modal = ({ isOpen, onClose, day, content, originPosition: _originPosition 
         </Button>
         
         {/* Header with golden accent */}
-        <div className="p-5 sm:p-6 pb-3 sm:pb-4 text-center border-b border-gold/20 bg-gradient-to-r from-transparent via-gold-lighter/20 to-transparent">
+        <div className="p-5 sm:p-6 pb-3 sm:pb-4 text-center border-b border-gold-light/30 bg-gradient-to-r from-transparent via-gold-lightest/40 to-transparent">
           <div className="flex items-center justify-center gap-3 mb-2">
             <div className={cn(
               'text-4xl sm:text-5xl font-bold',
-              'bg-gradient-to-r from-pink-primary via-pink-primary to-gold-dark bg-clip-text text-transparent',
+              'bg-gradient-to-r from-pink-primary via-pink-warm to-gold bg-clip-text text-transparent',
               'animate-fadeIn'
             )}>
               {day}
             </div>
             {isSpecialDay && (
-              <Badge variant="secondary" className="bg-gradient-to-r from-pink-primary/10 to-gold/10 text-pink-primary border-gold/30 animate-fadeIn">
+              <Badge variant="secondary" className="bg-gradient-to-r from-pink-lighter to-gold-lighter text-pink-primary border-gold-light/50 animate-fadeIn">
                 <Heart className="w-3 h-3 mr-1 fill-current" />
                 9 meses juntos
               </Badge>
             )}
           </div>
-          <p className="text-sm text-muted-foreground">Diciembre 2025</p>
+          <p className="text-sm text-pink-primary/70">Diciembre 2025</p>
         </div>
         
         {/* Content */}
-        <div className="p-5 sm:p-6 text-gray-700">
+        <div className="p-5 sm:p-6 text-pink-primary/90">
           {renderContent()}
         </div>
       </Card>

@@ -21,10 +21,10 @@ const CustomContent = ({ data }: CustomContentProps) => {
             <li 
               key={index}
               className={cn(
-                'bg-white p-5 md:p-6 my-4 rounded-2xl text-lg md:text-xl text-gray-700',
-                'shadow-md shadow-pink-primary/15 border-l-4 border-pink-light',
+                'bg-warm-cream p-5 md:p-6 my-4 rounded-2xl text-lg md:text-xl text-pink-primary/85',
+                'shadow-md shadow-gold/15 border-l-4 border-gold-light',
                 'transition-all duration-300 hover:translate-x-2.5 hover:shadow-lg',
-                'hover:shadow-pink-primary/25 hover:border-pink-primary',
+                'hover:shadow-gold/25 hover:border-gold',
                 'opacity-0 animate-slideIn'
               )}
               style={{ animationDelay: `${index * 0.1}s` }}
@@ -36,20 +36,20 @@ const CustomContent = ({ data }: CustomContentProps) => {
       )}
       
       {data.specialMessage && (
-        <div className="mt-10 p-8 bg-gradient-to-br from-pink-light/20 to-pink-lighter/30 rounded-3xl text-center border-2 border-dashed border-pink-primary relative overflow-hidden">
+        <div className="mt-10 p-8 bg-gradient-to-br from-pink-lightest/50 to-gold-lightest/50 rounded-3xl text-center border-2 border-dashed border-gold relative overflow-hidden">
           {/* Background pattern */}
-          <div className="absolute inset-0 opacity-30 animate-sparkle-bg"
+          <div className="absolute inset-0 opacity-20 animate-sparkle-bg"
                style={{
-                 background: 'radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 10%)',
+                 background: 'radial-gradient(circle, rgba(201, 168, 108, 0.3) 10%, transparent 10%)',
                  backgroundSize: '20px 20px'
                }}>
           </div>
           
-          <Sparkles className="w-8 h-8 mx-auto my-3 text-pink-primary animate-spin-sparkle relative z-10" />
+          <Sparkles className="w-8 h-8 mx-auto my-3 text-gold animate-spin-sparkle relative z-10" />
           <p className="text-lg md:text-xl text-pink-primary font-semibold leading-relaxed my-5 relative z-10 drop-shadow-sm">
             {data.specialMessage}
           </p>
-          <Sparkles className="w-8 h-8 mx-auto my-3 text-pink-primary animate-spin-sparkle relative z-10" />
+          <Sparkles className="w-8 h-8 mx-auto my-3 text-gold animate-spin-sparkle relative z-10" />
         </div>
       )}
     </div>
