@@ -7,6 +7,11 @@ import VideoContent from './content/VideoContent';
 import URLContent from './content/URLContent';
 import CustomContent from './content/CustomContent';
 import type { DayContent } from '../types/calendar';
+import { X, Heart } from 'lucide-react';
+import { Card } from './ui/card';
+import { Button } from './ui/button';
+import { Badge } from './ui/badge';
+import { cn } from '@/lib/utils';
 
 interface ModalProps {
   isOpen: boolean;
@@ -59,44 +64,60 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
     }
   };
 
+  const isSpecialDay = day === 14;
+
   return (
     <div 
-      className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-[fadeIn_0.2s_ease-out]"
+      className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-4 animate-fadeIn"
       onClick={onClose}
       style={{
         transformOrigin: transformOrigin,
       }}
     >
-      <div 
-        className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative"
+      <Card 
+        className={cn(
+          'relative w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl border-0',
+          'animate-modalSlideUp'
+        )}
         onClick={(e) => e.stopPropagation()}
         style={{
-          animation: 'modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
           transformOrigin: transformOrigin,
         }}
       >
-        <button
-          className="absolute top-4 right-4 bg-pink-primary text-white w-10 h-10 rounded-full text-xl flex items-center justify-center hover:bg-pink-primary/90 hover:rotate-90 transition-all duration-300 shadow-lg z-10"
+        {/* Close button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute top-3 right-3 rounded-full bg-pink-primary/10 hover:bg-pink-primary hover:text-white z-10 transition-all duration-300 hover:rotate-90"
           onClick={onClose}
         >
-          ✕
-        </button>
+          <X className="h-5 w-5" />
+        </Button>
         
-        <div className="p-6 pb-4 text-center border-b border-gray-100">
-          <div className="text-5xl font-bold text-pink-primary mb-1">
-            {day}
-          </div>
-          {day === 14 && (
-            <div className="text-sm text-pink-primary/70 font-medium mt-1">
-              9 meses juntos 💕
+        {/* Header */}
+        <div className="p-5 sm:p-6 pb-3 sm:pb-4 text-center border-b border-border/50">
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <div className={cn(
+              'text-4xl sm:text-5xl font-bold text-pink-primary',
+              'animate-fadeIn'
+            )}>
+              {day}
             </div>
-          )}
+            {isSpecialDay && (
+              <Badge variant="secondary" className="bg-pink-primary/10 text-pink-primary border-pink-primary/20 animate-fadeIn">
+                <Heart className="w-3 h-3 mr-1" />
+                9 meses juntos
+              </Badge>
+            )}
+          </div>
+          <p className="text-sm text-muted-foreground">Diciembre 2025</p>
         </div>
         
-        <div className="p-6 text-gray-700">
+        {/* Content */}
+        <div className="p-5 sm:p-6 text-gray-700">
           {renderContent()}
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

@@ -1,5 +1,8 @@
 import { useState, useRef } from 'react';
 import type { AudioContent as AudioContentType } from '../../types/calendar';
+import { Music, Play, Pause, Headphones, AlertTriangle } from 'lucide-react';
+import { Button } from '../ui/button';
+import { cn } from '@/lib/utils';
 
 interface AudioContentProps {
   data: AudioContentType;
@@ -27,9 +30,7 @@ const AudioContent = ({ data }: AudioContentProps) => {
 
   return (
     <div className="text-center py-8">
-      <div className="text-6xl mb-5 animate-[musical-note_3s_ease-in-out_infinite]">
-        🎵
-      </div>
+      <Music className="w-16 h-16 mx-auto mb-5 text-pink-primary animate-musical-note" />
       
       {data.title && (
         <h3 className="text-3xl text-pink-primary font-bold my-5 font-serif">
@@ -38,24 +39,36 @@ const AudioContent = ({ data }: AudioContentProps) => {
       )}
       
       {data.description && (
-        <p className="text-lg text-[#5a3a4a] my-4 italic">
+        <p className="text-lg text-gray-700 my-4 italic">
           {data.description}
         </p>
       )}
       
       {hasError ? (
-        <p className="text-base text-pink-primary font-semibold my-8 p-5 bg-pink-primary/10 rounded-2xl border-2 border-dashed border-pink-primary">
-          ⚠️ No se pudo cargar el audio. Por favor, verifica que el archivo existe.
-        </p>
+        <div className="text-base text-pink-primary font-semibold my-8 p-5 bg-pink-primary/10 rounded-2xl border-2 border-dashed border-pink-primary flex items-center justify-center gap-2">
+          <AlertTriangle className="w-5 h-5" />
+          <span>No se pudo cargar el audio. Por favor, verifica que el archivo existe.</span>
+        </div>
       ) : (
         <>
           <div className="my-8 flex justify-center">
-            <button 
-              className={`w-20 h-20 rounded-full border-none bg-gradient-to-br from-pink-light to-pink-primary text-white text-3xl cursor-pointer flex items-center justify-center shadow-lg shadow-pink-primary/40 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-pink-primary/60 active:scale-95 relative ${isPlaying ? 'animate-[ripple_2s_linear_infinite]' : ''}`}
+            <Button
+              size="icon"
+              className={cn(
+                'w-20 h-20 rounded-full bg-gradient-to-br from-pink-light to-pink-primary',
+                'shadow-lg shadow-pink-primary/40 transition-all duration-300',
+                'hover:scale-110 hover:shadow-xl hover:shadow-pink-primary/60',
+                'active:scale-95',
+                isPlaying && 'animate-ripple'
+              )}
               onClick={togglePlay}
             >
-              {isPlaying ? '⏸️' : '▶️'}
-            </button>
+              {isPlaying ? (
+                <Pause className="w-8 h-8" />
+              ) : (
+                <Play className="w-8 h-8 ml-1" />
+              )}
+            </Button>
             
             <audio 
               ref={audioRef}
@@ -65,9 +78,19 @@ const AudioContent = ({ data }: AudioContentProps) => {
             />
           </div>
           
-          <p className="text-base text-pink-primary font-semibold mt-5 animate-[fade-pulse_2s_ease-in-out_infinite]">
-            {isPlaying ? 'Reproduciendo... 🎶' : 'Presiona para escuchar 🎧'}
-          </p>
+          <div className="flex items-center justify-center gap-2 text-base text-pink-primary font-semibold mt-5 animate-fade-pulse">
+            {isPlaying ? (
+              <>
+                <Music className="w-5 h-5" />
+                <span>Reproduciendo...</span>
+              </>
+            ) : (
+              <>
+                <Headphones className="w-5 h-5" />
+                <span>Presiona para escuchar</span>
+              </>
+            )}
+          </div>
         </>
       )}
     </div>
