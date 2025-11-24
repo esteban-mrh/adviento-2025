@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
 import { announcementMessages } from '../data/messages';
 
-const AnnouncementBanner = () => {
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+const AnnouncementBanner = (): JSX.Element | null => {
+  const [currentMessageIndex, setCurrentMessageIndex] = useState<number>(0);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
 
   // Rotate messages every 8 seconds
   useEffect(() => {
     if (announcementMessages.length === 0) return;
 
-    const interval = setInterval(() => {
+    const interval: NodeJS.Timeout = setInterval(() => {
       setIsVisible(false);
       
       setTimeout(() => {
-        setCurrentMessageIndex((prevIndex) => 
+        setCurrentMessageIndex((prevIndex: number) => 
           (prevIndex + 1) % announcementMessages.length
         );
         setIsVisible(true);
