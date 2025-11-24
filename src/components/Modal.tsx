@@ -68,7 +68,7 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
 
   return (
     <div 
-      className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-4 animate-in fade-in duration-200"
+      className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-4 animate-fadeIn"
       onClick={onClose}
       style={{
         transformOrigin: transformOrigin,
@@ -77,7 +77,7 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
       <Card 
         className={cn(
           'relative w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl border-0',
-          'animate-in fade-in zoom-in-95 slide-in-from-bottom-4 duration-300'
+          'animate-modalSlideUp'
         )}
         onClick={(e) => e.stopPropagation()}
         style={{
@@ -99,12 +99,12 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
           <div className="flex items-center justify-center gap-3 mb-2">
             <div className={cn(
               'text-4xl sm:text-5xl font-bold text-pink-primary',
-              'animate-in zoom-in duration-500'
+              'animate-fadeIn'
             )}>
               {day}
             </div>
             {isSpecialDay && (
-              <Badge variant="secondary" className="bg-pink-primary/10 text-pink-primary border-pink-primary/20 animate-in slide-in-from-right-2 duration-500">
+              <Badge variant="secondary" className="bg-pink-primary/10 text-pink-primary border-pink-primary/20 animate-fadeIn">
                 <Heart className="w-3 h-3 mr-1" />
                 9 meses juntos
               </Badge>

@@ -52,7 +52,7 @@ const Calendar = () => {
       <header className="text-center mb-6 sm:mb-8 relative z-10">
         <h1 className={cn(
           'text-3xl sm:text-4xl md:text-5xl font-bold text-pink-primary mb-2 tracking-tight',
-          'animate-in fade-in slide-in-from-top-4 duration-700'
+          'animate-fadeIn'
         )}>
           Diciembre 2025
         </h1>
@@ -71,7 +71,7 @@ const Calendar = () => {
           <div 
             key={day} 
             ref={(el) => (cardRefs.current[day] = el)}
-            className="animate-in fade-in zoom-in-95 duration-500"
+            className="animate-fadeIn"
             style={{ animationDelay: `${day * 30}ms` }}
           >
             <DayCard
