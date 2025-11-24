@@ -1,6 +1,6 @@
-import type { URLContent as URLContentType } from '../../types/calendar';
+import type { URLContent as URLContentType } from '../../../types/calendar';
 import { Link2, ExternalLink, Star } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 
 interface URLContentProps {
   data: URLContentType;

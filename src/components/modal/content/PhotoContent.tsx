@@ -1,4 +1,4 @@
-import type { PhotoContent as PhotoContentType } from '../../types/calendar';
+import type { PhotoContent as PhotoContentType } from '../../../types/calendar';
 import { Camera, Heart, Sparkles } from 'lucide-react';
 
 // Placeholder image for when photo fails to load

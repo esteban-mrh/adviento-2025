@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
-import type { AudioContent as AudioContentType } from '../../types/calendar';
+import type { AudioContent as AudioContentType } from '../../../types/calendar';
 import { Music, Play, Pause, Headphones, AlertTriangle } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 import { cn } from '@/lib/utils';
 
 interface AudioContentProps {
