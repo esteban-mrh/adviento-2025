@@ -3,7 +3,7 @@ import DayCard from './DayCard';
 import { Modal } from '../modal';
 import { AnnouncementBanner } from '../common';
 import { canOpenDay } from '../../lib/dateUtils';
-import { calendarData } from '../../data/calendarData';
+import { calendarData } from '@/lib/calendarData';
 import { cn } from '@/lib/utils';
 
 const Calendar = () => {

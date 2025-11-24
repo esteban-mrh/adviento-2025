@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { announcementMessages } from '../../data/messages';
+import { announcementMessages } from '../../lib/messages';
 import { Megaphone } from 'lucide-react';
 import { Card } from '../ui/card';
 import { cn } from '@/lib/utils';
