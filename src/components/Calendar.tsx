@@ -4,6 +4,7 @@ import Modal from './Modal';
 import AnnouncementBanner from './AnnouncementBanner';
 import { canOpenDay } from '../lib/dateUtils';
 import { calendarData } from '../data/calendarData';
+import { cn } from '@/lib/utils';
 
 const Calendar = () => {
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
@@ -37,7 +38,7 @@ const Calendar = () => {
   const days = Array.from({ length: 24 }, (_, i) => i + 1);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 px-4 py-8 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 px-3 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <div className="absolute top-0 left-0 w-full h-full" 
@@ -48,19 +49,31 @@ const Calendar = () => {
       </div>
 
       {/* Minimal header */}
-      <header className="text-center mb-8 relative z-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-pink-primary mb-2 tracking-tight">
+      <header className="text-center mb-6 sm:mb-8 relative z-10">
+        <h1 className={cn(
+          'text-3xl sm:text-4xl md:text-5xl font-bold text-pink-primary mb-2 tracking-tight',
+          'animate-in fade-in slide-in-from-top-4 duration-700'
+        )}>
           Diciembre 2025
         </h1>
-        <p className="text-lg text-pink-primary/70 font-medium">
+        <p className="text-base sm:text-lg text-pink-primary/70 font-medium">
           Para Dome 💕
         </p>
       </header>
 
-      {/* Calendar grid */}
-      <div className="max-w-5xl mx-auto grid grid-cols-4 md:grid-cols-6 gap-3 md:gap-4 px-2 relative z-10">
+      {/* Calendar grid - improved for mobile */}
+      <div className={cn(
+        'max-w-5xl mx-auto grid gap-2.5 sm:gap-3 md:gap-4 relative z-10',
+        'grid-cols-4 sm:grid-cols-4 md:grid-cols-6',
+        'px-1 sm:px-2'
+      )}>
         {days.map((day) => (
-          <div key={day} ref={(el) => (cardRefs.current[day] = el)}>
+          <div 
+            key={day} 
+            ref={(el) => (cardRefs.current[day] = el)}
+            className="animate-in fade-in zoom-in-95 duration-500"
+            style={{ animationDelay: `${day * 30}ms` }}
+          >
             <DayCard
               day={day}
               canOpen={canOpenDay(day)}

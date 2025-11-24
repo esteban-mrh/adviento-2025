@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import type { VideoContent as VideoContentType } from '../../types/calendar';
+import { Video, AlertTriangle, Popcorn, Sparkles } from 'lucide-react';
 
 interface VideoContentProps {
   data: VideoContentType;
@@ -79,9 +80,7 @@ const VideoContent = ({ data }: VideoContentProps) => {
 
   return (
     <div className="text-center py-5">
-      <div className="text-6xl mb-5 animate-bounce">
-        🎬
-      </div>
+      <Video className="w-16 h-16 mx-auto mb-5 text-pink-primary animate-bounce" />
       
       {data.title && (
         <h3 className="text-3xl text-pink-primary font-bold my-5 font-serif">
@@ -90,15 +89,16 @@ const VideoContent = ({ data }: VideoContentProps) => {
       )}
       
       {data.description && (
-        <p className="text-lg text-[#5a3a4a] my-4 italic">
+        <p className="text-lg text-gray-700 my-4 italic">
           {data.description}
         </p>
       )}
       
       {hasError || videoEmbed.error ? (
-        <p className="text-base text-pink-primary font-semibold my-8 p-5 bg-pink-primary/10 rounded-2xl border-2 border-dashed border-pink-primary">
-          ⚠️ No se pudo cargar el video. Por favor, verifica que la URL es correcta.
-        </p>
+        <div className="text-base text-pink-primary font-semibold my-8 p-5 bg-pink-primary/10 rounded-2xl border-2 border-dashed border-pink-primary flex items-center justify-center gap-2">
+          <AlertTriangle className="w-5 h-5" />
+          <span>No se pudo cargar el video. Por favor, verifica que la URL es correcta.</span>
+        </div>
       ) : (
         <div className="my-8 relative">
           <div className="relative inline-block w-full max-w-3xl bg-white p-3 rounded-2xl shadow-lg shadow-pink-primary/20 border-2 border-pink-light/50">
@@ -107,7 +107,10 @@ const VideoContent = ({ data }: VideoContentProps) => {
         </div>
       )}
       
-      <div className="text-3xl animate-float mt-4">🍿✨</div>
+      <div className="flex items-center justify-center gap-2 mt-4">
+        <Popcorn className="w-6 h-6 text-pink-primary animate-float" />
+        <Sparkles className="w-6 h-6 text-pink-primary animate-float" style={{ animationDelay: '0.5s' }} />
+      </div>
     </div>
   );
 };

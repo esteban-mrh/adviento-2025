@@ -1,4 +1,6 @@
 import type { URLContent as URLContentType } from '../../types/calendar';
+import { Link2, ExternalLink, Star } from 'lucide-react';
+import { Button } from '../ui/button';
 
 interface URLContentProps {
   data: URLContentType;
@@ -11,9 +13,7 @@ const URLContent = ({ data }: URLContentProps) => {
 
   return (
     <div className="text-center py-8">
-      <div className="text-6xl mb-5 animate-bounce">
-        🔗
-      </div>
+      <Link2 className="w-16 h-16 mx-auto mb-5 text-pink-primary animate-bounce" />
       
       {data.title && (
         <h3 className="text-3xl text-pink-primary font-bold my-5 font-serif">
@@ -22,14 +22,15 @@ const URLContent = ({ data }: URLContentProps) => {
       )}
       
       {data.description && (
-        <p className="text-lg text-[#5a3a4a] my-4 italic mb-8">
+        <p className="text-lg text-gray-700 my-4 italic mb-8">
           {data.description}
         </p>
       )}
       
-      <button
+      <Button
         onClick={handleClick}
-        className="group relative inline-flex items-center gap-3 px-8 py-4 text-lg font-bold text-white bg-gradient-to-br from-pink-light to-pink-primary rounded-full shadow-lg shadow-pink-primary/40 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-pink-primary/60 active:scale-95 overflow-hidden"
+        size="lg"
+        className="group relative inline-flex items-center gap-3 text-lg font-bold bg-gradient-to-br from-pink-light to-pink-primary hover:scale-110 active:scale-95 overflow-hidden shadow-lg shadow-pink-primary/40 hover:shadow-xl hover:shadow-pink-primary/60"
       >
         {/* Shimmer effect */}
         <div 
@@ -45,24 +46,13 @@ const URLContent = ({ data }: URLContentProps) => {
           {data.buttonText || 'Abrir enlace'}
         </span>
         
-        <svg 
-          className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth={2} 
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
-          />
-        </svg>
-      </button>
+        <ExternalLink className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+      </Button>
       
-      <p className="text-sm text-pink-primary/70 mt-6 font-medium">
-        Se abrirá en una nueva pestaña 🌟
-      </p>
+      <div className="flex items-center justify-center gap-2 text-sm text-pink-primary/70 mt-6 font-medium">
+        <Star className="w-4 h-4" />
+        <span>Se abrirá en una nueva pestaña</span>
+      </div>
     </div>
   );
 };

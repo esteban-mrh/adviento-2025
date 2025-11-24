@@ -1,4 +1,6 @@
 import type { CustomContent as CustomContentType } from '../../types/calendar';
+import { Sparkles } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface CustomContentProps {
   data: CustomContentType;
@@ -18,7 +20,13 @@ const CustomContent = ({ data }: CustomContentProps) => {
           {data.items.map((item, index) => (
             <li 
               key={index}
-              className="bg-white p-5 md:p-6 my-4 rounded-2xl text-lg md:text-xl text-[#5a3a4a] shadow-md shadow-pink-primary/15 border-l-4 border-pink-light transition-all duration-300 hover:translate-x-2.5 hover:shadow-lg hover:shadow-pink-primary/25 hover:border-pink-primary opacity-0 animate-[slideIn_0.5s_ease-out_forwards]"
+              className={cn(
+                'bg-white p-5 md:p-6 my-4 rounded-2xl text-lg md:text-xl text-gray-700',
+                'shadow-md shadow-pink-primary/15 border-l-4 border-pink-light',
+                'transition-all duration-300 hover:translate-x-2.5 hover:shadow-lg',
+                'hover:shadow-pink-primary/25 hover:border-pink-primary',
+                'opacity-0 animate-slideIn'
+              )}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {item}
@@ -30,22 +38,18 @@ const CustomContent = ({ data }: CustomContentProps) => {
       {data.specialMessage && (
         <div className="mt-10 p-8 bg-gradient-to-br from-pink-light/20 to-pink-lighter/30 rounded-3xl text-center border-2 border-dashed border-pink-primary relative overflow-hidden">
           {/* Background pattern */}
-          <div className="absolute inset-0 opacity-30 animate-[sparkle-bg_20s_linear_infinite]"
+          <div className="absolute inset-0 opacity-30 animate-sparkle-bg"
                style={{
                  background: 'radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 10%)',
                  backgroundSize: '20px 20px'
                }}>
           </div>
           
-          <div className="text-3xl my-2.5 animate-[spin-sparkle_4s_linear_infinite] relative z-10">
-            ✨
-          </div>
+          <Sparkles className="w-8 h-8 mx-auto my-3 text-pink-primary animate-spin-sparkle relative z-10" />
           <p className="text-lg md:text-xl text-pink-primary font-semibold leading-relaxed my-5 relative z-10 drop-shadow-sm">
             {data.specialMessage}
           </p>
-          <div className="text-3xl my-2.5 animate-[spin-sparkle_4s_linear_infinite] relative z-10">
-            ✨
-          </div>
+          <Sparkles className="w-8 h-8 mx-auto my-3 text-pink-primary animate-spin-sparkle relative z-10" />
         </div>
       )}
     </div>
