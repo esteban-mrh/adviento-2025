@@ -49,30 +49,32 @@ const Modal = ({ isOpen, onClose, day, content }: ModalProps) => {
 
   return (
     <div 
-      className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-5 animate-[fadeIn_0.3s_ease-out]"
+      className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-[fadeIn_0.2s_ease-out]"
       onClick={onClose}
     >
       <div 
-        className="bg-gradient-to-br from-pink-bg to-pink-lightest rounded-[30px] max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl shadow-pink-primary/30 relative animate-slideUp border-4 border-pink-light/50"
+        className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative animate-slideUp"
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          className="absolute top-5 right-5 bg-pink-primary/90 text-white w-10 h-10 rounded-full text-2xl flex items-center justify-center hover:bg-pink-primary hover:rotate-90 hover:scale-110 transition-all duration-300 shadow-lg shadow-pink-primary/30 z-10"
+          className="absolute top-4 right-4 bg-pink-primary text-white w-10 h-10 rounded-full text-xl flex items-center justify-center hover:bg-pink-primary/90 hover:rotate-90 transition-all duration-300 shadow-lg z-10"
           onClick={onClose}
         >
           ✕
         </button>
         
-        <div className="p-8 pb-5 text-center border-b-2 border-pink-light/30">
-          <div className="text-4xl md:text-5xl font-bold text-pink-primary font-serif drop-shadow-md mb-3">
-            Día {day}
+        <div className="p-6 pb-4 text-center border-b border-gray-100">
+          <div className="text-5xl font-bold text-pink-primary mb-1">
+            {day}
           </div>
-          <div className="text-2xl animate-float">
-            🎄✨
-          </div>
+          {day === 14 && (
+            <div className="text-sm text-pink-primary/70 font-medium mt-1">
+              9 meses juntos 💕
+            </div>
+          )}
         </div>
         
-        <div className="p-8 text-[#5a3a4a]">
+        <div className="p-6 text-gray-700">
           {renderContent()}
         </div>
       </div>
