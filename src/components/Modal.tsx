@@ -23,19 +23,13 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) => {
-  // Random animation variant for each opening - computed once per modal instance
-  // useState with function initializer ensures this only runs once on mount
-  const [animationVariant] = useState<'card' | 'box'>(() => {
-    return Math.random() > 0.5 ? 'card' : 'box';
-  });
-
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      // Delay content appearance for animation effect
-      const timer = setTimeout(() => setShowContent(true), 800);
+      // Delay content appearance for animation effect - 1200ms to match envelope animation
+      const timer = setTimeout(() => setShowContent(true), 1200);
       return () => {
         clearTimeout(timer);
         document.body.style.overflow = 'unset';
@@ -90,9 +84,9 @@ const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) =>
       {!showContent && (
         <div className="absolute inset-0 flex items-center justify-center z-[60]">
           <div className="text-center">
-            <AnimatedCard variant={animationVariant} />
+            <AnimatedCard />
             <p className="mt-8 text-white text-lg font-semibold animate-fade-pulse">
-              {animationVariant === 'card' ? 'Abriendo tarjeta...' : 'Abriendo caja...'}
+              Abriendo sobre...
             </p>
           </div>
         </div>
