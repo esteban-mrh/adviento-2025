@@ -11,7 +11,7 @@
  */
 export const canOpenDay = (day: number, year = 2025, month = 11) => {
   // DEMO MODE: Set to true to allow all days to be opened for testing
-  const DEMO_MODE = false;
+  const DEMO_MODE = true;
   
   if (DEMO_MODE) return true;
   
