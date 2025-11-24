@@ -49,20 +49,20 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         pink: {
-          primary: '#d4576d',
-          light: '#ffc4d6',
-          lighter: '#ffd4e5',
-          lightest: '#ffe4f0',
-          bg: '#fff5f8',
-          pale: '#ffeef5',
+          primary: '#E8B4BE',
+          light: '#F5D7DC',
+          lighter: '#FAE6EA',
+          lightest: '#FDF2F4',
+          bg: '#FEF9FA',
+          pale: '#FFF5F7',
         },
         gold: {
-          DEFAULT: '#FFD700',
-          light: '#FFECB3',
-          lighter: '#FFF8E1',
-          dark: '#DAA520',
-          darker: '#B8860B',
-          shimmer: '#FFF4CC',
+          DEFAULT: '#E5D4C1',
+          light: '#F0E8DC',
+          lighter: '#F7F2EA',
+          dark: '#D4C4AE',
+          darker: '#C2B29C',
+          shimmer: '#F5EDE0',
         }
       },
       borderRadius: {
@@ -96,6 +96,9 @@ export default {
         'golden-shimmer': 'goldenShimmer 2.5s ease-in-out infinite',
         'gentle-bounce': 'gentleBounce 1s ease-in-out',
         'scale-in': 'scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'card-open': 'cardOpen 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        'box-lid-open': 'boxLidOpen 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        'content-reveal': 'contentReveal 0.5s ease-out 0.5s forwards',
       },
       keyframes: {
         shimmer: {
@@ -230,6 +233,43 @@ export default {
             opacity: '1',
           },
         },
+        cardOpen: {
+          '0%': {
+            transform: 'perspective(1000px) rotateY(0deg)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'perspective(1000px) rotateY(-165deg)',
+            opacity: '0.8',
+          },
+        },
+        boxLidOpen: {
+          '0%': {
+            transform: 'translateY(0) translateZ(0) rotateX(0deg)',
+          },
+          '50%': {
+            transform: 'translateY(-60px) translateZ(20px) rotateX(-15deg)',
+          },
+          '100%': {
+            transform: 'translateY(-100px) translateZ(30px) rotateX(-30deg)',
+          },
+        },
+        contentReveal: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(30px) scale(0.3)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(-10px) scale(1)',
+          },
+        },
+      },
+      perspective: {
+        '1000': '1000px',
+      },
+      transformStyle: {
+        'preserve-3d': 'preserve-3d',
       },
     },
   },

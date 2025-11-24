@@ -38,7 +38,7 @@ const Calendar = () => {
   const days = Array.from({ length: 24 }, (_, i) => i + 1);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 via-amber-50/30 to-purple-50 px-3 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50/40 via-rose-50/30 via-amber-50/20 to-blue-50/30 px-3 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
       {/* Enhanced background with golden sparkles */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-0 left-0 w-full h-full" 
