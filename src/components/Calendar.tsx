@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import DayCard from './DayCard';
 import Modal from './Modal';
+import AnnouncementBanner from './AnnouncementBanner';
 import { canOpenDay } from '../utils/dateUtils';
 import { calendarData } from '../data/calendarData';
 
@@ -68,6 +69,9 @@ const Calendar = () => {
           </div>
         ))}
       </div>
+
+      {/* Announcement Banner */}
+      <AnnouncementBanner />
 
       <Modal
         isOpen={isModalOpen}
