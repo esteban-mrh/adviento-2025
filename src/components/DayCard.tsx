@@ -62,7 +62,7 @@ const DayCard = ({ day, canOpen, onClick }: DayCardProps) => {
       {/* Hover overlay with gradient - positioned absolutely so it doesn't affect layout */}
       {canOpen && (
         <div className="absolute inset-0 bg-gradient-to-br from-pink-primary via-pink-primary/95 to-gold-dark/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-sm z-20 rounded-xl">
-          <div className="flex items-center gap-2 text-white animate-gentle-bounce">
+          <div className="flex items-center gap-2 text-white group-hover:animate-gentle-bounce">
             {isSpecialDay ? (
               <HeartIcon className="w-6 h-6" />
             ) : (

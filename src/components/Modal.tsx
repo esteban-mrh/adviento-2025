@@ -22,7 +22,8 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) => {
-  // Random animation variant for each opening
+  // Random animation variant for each opening - computed once per modal instance
+  // useState with function initializer ensures this only runs once on mount
   const [animationVariant] = useState(() => {
     const variants = ['envelope-open', 'gift-unwrap', 'letter-unfold'];
     return variants[Math.floor(Math.random() * variants.length)];
