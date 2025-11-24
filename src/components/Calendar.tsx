@@ -38,20 +38,33 @@ const Calendar = () => {
   const days = Array.from({ length: 24 }, (_, i) => i + 1);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 px-3 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 via-amber-50/30 to-purple-50 px-3 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
+      {/* Enhanced background with golden sparkles */}
+      <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-0 left-0 w-full h-full" 
              style={{
-               backgroundImage: 'radial-gradient(circle at 25% 25%, rgba(255, 192, 203, 0.15) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(216, 180, 254, 0.15) 0%, transparent 50%)',
+               backgroundImage: `
+                 radial-gradient(circle at 25% 25%, rgba(255, 192, 203, 0.2) 0%, transparent 50%),
+                 radial-gradient(circle at 75% 75%, rgba(216, 180, 254, 0.2) 0%, transparent 50%),
+                 radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.15) 0%, transparent 60%),
+                 radial-gradient(circle at 10% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
+                 radial-gradient(circle at 90% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 40%)
+               `,
              }}>
         </div>
+        {/* Floating golden sparkles */}
+        <div className="absolute top-20 left-[10%] w-2 h-2 bg-gold rounded-full animate-twinkle" style={{ animationDelay: '0s' }}></div>
+        <div className="absolute top-40 right-[15%] w-1.5 h-1.5 bg-gold-light rounded-full animate-twinkle" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute bottom-32 left-[20%] w-2.5 h-2.5 bg-gold rounded-full animate-twinkle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-60 right-[25%] w-1 h-1 bg-gold-light rounded-full animate-twinkle" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute bottom-48 right-[30%] w-2 h-2 bg-gold rounded-full animate-twinkle" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      {/* Minimal header */}
+      {/* Minimal header with golden accent */}
       <header className="text-center mb-6 sm:mb-8 relative z-10">
         <h1 className={cn(
-          'text-3xl sm:text-4xl md:text-5xl font-bold text-pink-primary mb-2 tracking-tight',
+          'text-3xl sm:text-4xl md:text-5xl font-bold mb-2 tracking-tight',
+          'bg-gradient-to-r from-pink-primary via-pink-primary to-gold-dark bg-clip-text text-transparent',
           'animate-fadeIn'
         )}>
           Diciembre 2025
