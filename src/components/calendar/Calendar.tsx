@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import DayCard from './DayCard';
 import { Modal } from '../modal';
-import { AnnouncementBanner } from '../common';
+import { AnnouncementBanner, Countdown } from '../common';
 import { canOpenDay } from '../../lib/dateUtils';
 import { calendarData } from '@/lib/calendarData';
 import { cn } from '@/lib/utils';
@@ -73,6 +73,9 @@ const Calendar = () => {
           Para Dome 💕
         </p>
       </header>
+
+      {/* Countdown to December 1st */}
+      <Countdown />
 
       {/* Calendar grid - improved for mobile */}
       <div className={cn(
