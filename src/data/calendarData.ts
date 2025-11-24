@@ -61,9 +61,12 @@ Tu admirador secreto 💕`
     }
   },
   6: {
-    type: 'text',
+    type: 'url',
     content: {
-      message: '🎵 Hoy es día de música\n\n¡Escucha una canción especial!'
+      url: 'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M', // Example URL
+      title: '🎵 Una Playlist Especial',
+      description: 'Canciones que me recuerdan a nosotros',
+      buttonText: 'Escuchar en Spotify'
     }
   },
   7: {
@@ -165,9 +168,12 @@ Te prometo amarte cada día más.`
     }
   },
   17: {
-    type: 'text',
+    type: 'video',
     content: {
-      message: '🎵 Canción del día:\n\n"Todo lo que necesito eres tú" 💕'
+      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Example YouTube video
+      title: '🎬 Un Video Para Ti',
+      description: 'Un momento especial capturado en video',
+      platform: 'youtube'
     }
   },
   18: {

@@ -1,4 +1,4 @@
-export type ContentType = 'text' | 'letter' | 'photo' | 'audio' | 'custom';
+export type ContentType = 'text' | 'letter' | 'photo' | 'audio' | 'video' | 'url' | 'custom';
 
 export interface TextContent {
   message: string;
@@ -20,6 +20,20 @@ export interface AudioContent {
   description?: string;
 }
 
+export interface VideoContent {
+  url: string;
+  title?: string;
+  description?: string;
+  platform?: 'youtube' | 'vimeo' | 'direct';
+}
+
+export interface URLContent {
+  url: string;
+  title?: string;
+  description?: string;
+  buttonText?: string;
+}
+
 export interface CustomContent {
   title?: string;
   items?: string[];
@@ -28,7 +42,7 @@ export interface CustomContent {
 
 export interface DayContent {
   type: ContentType;
-  content: TextContent | LetterContent | PhotoContent | AudioContent | CustomContent;
+  content: TextContent | LetterContent | PhotoContent | AudioContent | VideoContent | URLContent | CustomContent;
 }
 
 export interface CalendarData {

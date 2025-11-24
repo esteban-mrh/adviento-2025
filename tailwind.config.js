@@ -29,6 +29,7 @@ export default {
         fadeIn: 'fadeIn 0.3s ease-out',
         float: 'float 3s ease-in-out infinite',
         slideUp: 'slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        modalSlideUp: 'modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
         heartbeat: 'heartbeat 1.5s ease-in-out infinite',
         twinkle: 'twinkle 2s ease-in-out infinite',
         rotate: 'rotate 4s linear infinite',
@@ -63,6 +64,10 @@ export default {
         slideUp: {
           '0%': { opacity: '0', transform: 'translateY(50px) scale(0.9)' },
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
+        modalSlideUp: {
+          '0%': { opacity: '0', transform: 'scale(0) translateY(50px)' },
+          '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
         },
         heartbeat: {
           '0%, 100%': { transform: 'scale(1)' },

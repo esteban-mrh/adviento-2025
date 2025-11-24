@@ -3,6 +3,8 @@ import TextContent from './content/TextContent';
 import LetterContent from './content/LetterContent';
 import PhotoContent from './content/PhotoContent';
 import AudioContent from './content/AudioContent';
+import VideoContent from './content/VideoContent';
+import URLContent from './content/URLContent';
 import CustomContent from './content/CustomContent';
 import type { DayContent } from '../types/calendar';
 
@@ -11,9 +13,10 @@ interface ModalProps {
   onClose: () => void;
   day: number | null;
   content: DayContent | null;
+  originPosition?: { x: number; y: number } | null;
 }
 
-const Modal = ({ isOpen, onClose, day, content }: ModalProps) => {
+const Modal = ({ isOpen, onClose, day, content, originPosition }: ModalProps) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -28,6 +31,11 @@ const Modal = ({ isOpen, onClose, day, content }: ModalProps) => {
 
   if (!isOpen) return null;
 
+  // Calculate transform origin for animation
+  const transformOrigin = originPosition 
+    ? `${originPosition.x}px ${originPosition.y}px`
+    : 'center center';
+
   const renderContent = () => {
     if (!content) return null;
 
@@ -40,6 +48,10 @@ const Modal = ({ isOpen, onClose, day, content }: ModalProps) => {
         return <PhotoContent data={content.content as any} />;
       case 'audio':
         return <AudioContent data={content.content as any} />;
+      case 'video':
+        return <VideoContent data={content.content as any} />;
+      case 'url':
+        return <URLContent data={content.content as any} />;
       case 'custom':
         return <CustomContent data={content.content as any} />;
       default:
@@ -51,10 +63,17 @@ const Modal = ({ isOpen, onClose, day, content }: ModalProps) => {
     <div 
       className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-[fadeIn_0.2s_ease-out]"
       onClick={onClose}
+      style={{
+        transformOrigin: transformOrigin,
+      }}
     >
       <div 
-        className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative animate-slideUp"
+        className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative"
         onClick={(e) => e.stopPropagation()}
+        style={{
+          animation: 'modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          transformOrigin: transformOrigin,
+        }}
       >
         <button
           className="absolute top-4 right-4 bg-pink-primary text-white w-10 h-10 rounded-full text-xl flex items-center justify-center hover:bg-pink-primary/90 hover:rotate-90 transition-all duration-300 shadow-lg z-10"

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import DayCard from './DayCard';
 import Modal from './Modal';
 import { canOpenDay } from '../utils/dateUtils';
@@ -7,9 +7,19 @@ import { calendarData } from '../data/calendarData';
 const Calendar = () => {
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [buttonPosition, setButtonPosition] = useState<{ x: number; y: number } | null>(null);
+  const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
   const handleDayClick = (day: number) => {
     if (canOpenDay(day)) {
+      const cardElement = cardRefs.current[day];
+      if (cardElement) {
+        const rect = cardElement.getBoundingClientRect();
+        setButtonPosition({
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2,
+        });
+      }
       setSelectedDay(day);
       setIsModalOpen(true);
     }
@@ -17,7 +27,10 @@ const Calendar = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setTimeout(() => setSelectedDay(null), 300);
+    setTimeout(() => {
+      setSelectedDay(null);
+      setButtonPosition(null);
+    }, 300);
   };
 
   const days = Array.from({ length: 24 }, (_, i) => i + 1);
@@ -46,12 +59,13 @@ const Calendar = () => {
       {/* Calendar grid */}
       <div className="max-w-5xl mx-auto grid grid-cols-4 md:grid-cols-6 gap-3 md:gap-4 px-2 relative z-10">
         {days.map((day) => (
-          <DayCard
-            key={day}
-            day={day}
-            canOpen={canOpenDay(day)}
-            onClick={() => handleDayClick(day)}
-          />
+          <div key={day} ref={(el) => (cardRefs.current[day] = el)}>
+            <DayCard
+              day={day}
+              canOpen={canOpenDay(day)}
+              onClick={() => handleDayClick(day)}
+            />
+          </div>
         ))}
       </div>
 
@@ -60,6 +74,7 @@ const Calendar = () => {
         onClose={closeModal}
         day={selectedDay}
         content={selectedDay ? calendarData[selectedDay] : null}
+        originPosition={buttonPosition}
       />
     </div>
   );
