@@ -41,16 +41,16 @@ const Calendar = () => {
     <div className="min-h-screen bg-gradient-to-br from-warm-cream via-pink-bg to-gold-lightest px-3 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
       {/* Enhanced background with warm golden and pink accents */}
       <div className="absolute inset-0 pointer-events-none opacity-50">
-        <div className="absolute top-0 left-0 w-full h-full" 
-             style={{
-               backgroundImage: `
+        <div className="absolute top-0 left-0 w-full h-full"
+          style={{
+            backgroundImage: `
                  radial-gradient(circle at 20% 20%, rgba(212, 145, 154, 0.15) 0%, transparent 45%),
                  radial-gradient(circle at 80% 80%, rgba(201, 168, 108, 0.12) 0%, transparent 45%),
                  radial-gradient(circle at 50% 50%, rgba(232, 180, 188, 0.1) 0%, transparent 55%),
                  radial-gradient(circle at 10% 70%, rgba(201, 168, 108, 0.08) 0%, transparent 35%),
                  radial-gradient(circle at 90% 30%, rgba(232, 180, 188, 0.08) 0%, transparent 35%)
                `,
-             }}>
+          }}>
         </div>
         {/* Floating golden sparkles */}
         <div className="absolute top-20 left-[10%] w-2 h-2 bg-gold rounded-full animate-twinkle" style={{ animationDelay: '0s' }}></div>
@@ -58,6 +58,8 @@ const Calendar = () => {
         <div className="absolute bottom-32 left-[20%] w-2.5 h-2.5 bg-gold rounded-full animate-twinkle" style={{ animationDelay: '1s' }}></div>
         <div className="absolute top-60 right-[25%] w-1 h-1 bg-gold-light rounded-full animate-twinkle" style={{ animationDelay: '1.5s' }}></div>
         <div className="absolute bottom-48 right-[30%] w-2 h-2 bg-gold rounded-full animate-twinkle" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 left-[35%] w-1.5 h-1.5 bg-gold-light rounded-full animate-twinkle" style={{ animationDelay: '2.5s' }}></div>
+        <div className="absolute top-32 left-[50%] w-2.5 h-2.5 bg-gold rounded-full animate-twinkle" style={{ animationDelay: '3s' }}></div>
       </div>
 
       {/* Minimal header with golden accent */}
@@ -67,12 +69,13 @@ const Calendar = () => {
           'bg-gradient-to-r from-pink-primary via-pink-primary to-gold-dark bg-clip-text text-transparent',
           'animate-fadeIn'
         )}>
-          Diciembre 2025
+          Navidad 2025
         </h1>
-        <p className="text-base sm:text-lg text-pink-primary/70 font-medium">
-          Para Mi Domi 💕
-        </p>
+
       </header>
+
+      {/* Announcement Banner */}
+      <AnnouncementBanner />
 
       {/* Countdown to December 1st */}
       <Countdown />
@@ -84,8 +87,8 @@ const Calendar = () => {
         'px-1 sm:px-2'
       )}>
         {days.map((day) => (
-          <div 
-            key={day} 
+          <div
+            key={day}
             ref={(el) => { cardRefs.current[day] = el; }}
             className="animate-fadeIn"
             style={{ animationDelay: `${day * 30}ms` }}
@@ -99,8 +102,7 @@ const Calendar = () => {
         ))}
       </div>
 
-      {/* Announcement Banner */}
-      <AnnouncementBanner />
+
 
       <Modal
         isOpen={isModalOpen}
@@ -109,6 +111,13 @@ const Calendar = () => {
         content={selectedDay ? calendarData[selectedDay] : null}
         originPosition={buttonPosition}
       />
+
+      {/* Footer */}
+      <footer>
+        <p className="text-center sm:text-lg text-pink-primary/70 font-medium pt-10">
+          Para Mi Domi 💕
+        </p>
+      </footer>
     </div>
   );
 };

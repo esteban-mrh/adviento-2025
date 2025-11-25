@@ -96,7 +96,7 @@ const Countdown = (): JSX.Element | null => {
               <SparkleIcon className="w-5 h-5 text-gold animate-twinkle" />
             </div>
             <p className="text-sm sm:text-base text-pink-primary/70">
-              Tiempo restante para el 1 de diciembre
+              Tiempo restante para empezar el calendario de Adviento
             </p>
           </div>
 
@@ -112,11 +112,6 @@ const Countdown = (): JSX.Element | null => {
               <TimeUnit value={timeRemaining.seconds} label="Segundos" />
             </div>
           </div>
-
-          {/* Timezone note */}
-          <p className="text-center mt-4 text-xs text-pink-primary/50">
-            Zona horaria: Ecuador (UTC-5)
-          </p>
         </div>
       </Card>
     </div>
