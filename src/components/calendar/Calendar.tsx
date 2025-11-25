@@ -71,6 +71,11 @@ const Calendar = () => {
         )}>
           Navidad 2025
         </h1>
+        <h5 className={cn(
+          'text-lg sm:text-xl md:text-2xl font-medium',
+          'text-pink-primary/80',
+          'animate-fadeIn delay-100'
+        )}>Nuestra primera navidad juntos</h5>
 
       </header>
 
@@ -115,7 +120,7 @@ const Calendar = () => {
       {/* Footer */}
       <footer>
         <p className="text-center sm:text-lg text-pink-primary/70 font-medium pt-10">
-          Para Mi Domi 💕
+          Hecho por Esteban, con mucho 💕 para mi Domi 
         </p>
       </footer>
     </div>
