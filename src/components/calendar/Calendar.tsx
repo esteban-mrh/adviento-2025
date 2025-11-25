@@ -1,16 +1,35 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import DayCard from './DayCard';
 import { Modal } from '../modal';
 import { AnnouncementBanner, Countdown } from '../common';
 import { canOpenDay } from '../../lib/dateUtils';
-import { calendarData } from '@/lib/calendarData';
+import { loadCalendarData } from '@/lib/contentLoader';
+import type { CalendarData } from '@/types/calendar';
 import { cn } from '@/lib/utils';
 
 const Calendar = () => {
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonPosition, setButtonPosition] = useState<{ x: number; y: number } | null>(null);
+  const [calendarData, setCalendarData] = useState<CalendarData>({});
+  const [isLoading, setIsLoading] = useState(true);
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
+
+  // Load calendar data from JSON files
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await loadCalendarData();
+        setCalendarData(data);
+      } catch (error) {
+        console.error('Failed to load calendar data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const handleDayClick = (day: number) => {
     if (canOpenDay(day)) {
@@ -36,6 +55,18 @@ const Calendar = () => {
   };
 
   const days = Array.from({ length: 24 }, (_, i) => i + 1);
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-warm-cream via-pink-bg to-gold-lightest flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-4xl mb-4 animate-bounce">🎄</div>
+          <p className="text-pink-primary text-lg">Cargando calendario...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-warm-cream via-pink-bg to-gold-lightest px-3 sm:px-4 py-6 sm:py-8 relative overflow-hidden">

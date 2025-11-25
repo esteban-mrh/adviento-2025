@@ -1,5 +1,5 @@
 import { useState, useEffect, JSX } from 'react';
-import { announcementMessages } from '../../lib/messages';
+import { loadAnnouncementMessages } from '../../lib/contentLoader';
 import { Heart } from 'lucide-react';
 import { Card } from '../ui/card';
 import { cn } from '@/lib/utils';
@@ -7,26 +7,37 @@ import { cn } from '@/lib/utils';
 const AnnouncementBanner = (): JSX.Element | null => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState<number>(0);
   const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [messages, setMessages] = useState<string[]>([]);
+
+  // Load messages from JSON files
+  useEffect(() => {
+    const loadMessages = async () => {
+      const loadedMessages = await loadAnnouncementMessages();
+      setMessages(loadedMessages);
+    };
+
+    loadMessages();
+  }, []);
 
   // Rotate messages every 8 seconds
   useEffect(() => {
-    if (announcementMessages.length === 0) return;
+    if (messages.length === 0) return;
 
     const interval = window.setInterval(() => {
       setIsVisible(false);
       
       setTimeout(() => {
         setCurrentMessageIndex((prevIndex: number) => 
-          (prevIndex + 1) % announcementMessages.length
+          (prevIndex + 1) % messages.length
         );
         setIsVisible(true);
       }, 300); // Short delay for fade transition
     }, 8000); // Change message every 8 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [messages]);
 
-  if (announcementMessages.length === 0) {
+  if (messages.length === 0) {
     return null;
   }
 
@@ -51,13 +62,13 @@ const AnnouncementBanner = (): JSX.Element | null => {
                   isVisible ? 'opacity-100' : 'opacity-0'
                 )}
               >
-                {announcementMessages[currentMessageIndex]}
+                {messages[currentMessageIndex]}
               </div>
 
               {/* Pagination dots */}
-              {announcementMessages.length > 1 && (
+              {messages.length > 1 && (
                 <div className="flex gap-1.5 mt-3 justify-center md:justify-start">
-                  {announcementMessages.map((_, index) => (
+                  {messages.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => {

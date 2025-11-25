@@ -133,9 +133,46 @@ npm run deploy  # Ejecuta automáticamente predeploy (build) antes de desplegar
 
 ## 📝 Guía de Personalización
 
+### 🎉 NUEVO: Sistema de Gestión de Contenidos (CMS)
+
+**¡Ahora puedes editar el contenido sin tocar código!**
+
+Este proyecto incluye **Decap CMS** (anteriormente Netlify CMS), un sistema de gestión de contenidos **100% gratuito** que te permite:
+
+- ✅ Editar días del calendario mediante una interfaz visual
+- ✅ Subir y gestionar imágenes, audio y video
+- ✅ Modificar mensajes del banner
+- ✅ Cambiar configuraciones generales
+- ✅ Compatible con GitHub Pages (sin servidor backend necesario)
+
+**Accede al CMS:**
+- **Desarrollo**: `http://localhost:5173/adviento-2025/admin/`
+- **Producción**: `https://tu-usuario.github.io/adviento-2025/admin/`
+
+**📖 [Lee la Guía Completa del CMS](./GUIA-CMS.md)** para aprender a usar el sistema.
+
+---
+
 ### 1. Configurar Contenido de los Días
 
-El contenido de cada día se configura en **`src/lib/calendarData.ts`**. Este archivo define qué se muestra cuando se abre cada día.
+Tienes **dos opciones** para editar el contenido:
+
+#### Opción A: Usar el CMS (Recomendado - No requiere código)
+
+1. Accede a `/admin/` en tu sitio
+2. Haz login con tu cuenta de GitHub
+3. Edita los días del calendario visualmente
+4. Guarda y publica los cambios
+
+Ver la [Guía del CMS](./GUIA-CMS.md) para más detalles.
+
+#### Opción B: Editar archivos JSON directamente
+
+El contenido se almacena en archivos JSON en `content/calendar/`. Cada día tiene su propio archivo (ejemplo: `day-1.json`, `day-2.json`, etc.).
+
+#### Opción C: Editar código TypeScript (Método antiguo)
+
+También puedes editar **`src/lib/calendarData.ts`** directamente si prefieres trabajar con código.
 
 #### Estructura Básica
 
@@ -270,7 +307,20 @@ Listas de elementos con mensaje especial opcional.
 
 ### 2. Personalizar Mensajes del Banner
 
-Los mensajes rotativos del banner se editan en **`src/lib/messages.ts`**:
+**Opción A: Usar el CMS (Recomendado)**
+
+1. Accede a `/admin/`
+2. Selecciona "Mensajes del Banner"
+3. Edita, crea o elimina mensajes
+4. Cambia el orden usando el campo "Orden"
+
+**Opción B: Editar archivos JSON**
+
+Los mensajes se almacenan en `content/announcements/` (ejemplo: `message-1.json`, `message-2.json`, etc.).
+
+**Opción C: Editar código TypeScript**
+
+Los mensajes rotativos del banner también se pueden editar en **`src/lib/messages.ts`**:
 
 ```typescript
 export const announcementMessages: string[] = [
@@ -703,6 +753,7 @@ Si encuentras algún bug o tienes una sugerencia:
 - [Tailwind CSS Docs](https://tailwindcss.com/docs)
 - [Vite Guide](https://vitejs.dev/guide/)
 - [shadcn/ui Components](https://ui.shadcn.com/)
+- [Decap CMS Documentation](https://decapcms.org/docs/) - Sistema de gestión de contenidos
 
 ### Tutoriales Relacionados
 - [Aprende React](https://react.dev/learn)
@@ -752,13 +803,16 @@ Usa herramientas de compresión:
 - [Squoosh](https://squoosh.app/) - Compresión avanzada
 - [ImageOptim](https://imageoptim.com/) - App de escritorio
 
-### ¿Puedo usar un CMS para el contenido?
+### ¿Cómo uso el CMS para editar contenido?
 
-Sí, podrías integrar:
-- **Contentful** - CMS headless
-- **Sanity** - CMS estructurado
-- **Strapi** - CMS open source
-- **Firebase Firestore** - Base de datos en tiempo real
+¡Este proyecto ya incluye un CMS integrado! **Decap CMS** te permite editar todo el contenido sin tocar código:
+
+1. Accede a `/admin/` en tu sitio desplegado
+2. Haz login con tu cuenta de GitHub
+3. Edita días del calendario, mensajes y configuración
+4. **100% gratuito** y compatible con GitHub Pages
+
+**📖 [Lee la Guía Completa del CMS](./GUIA-CMS.md)** para instrucciones detalladas de configuración y uso.
 
 ### ¿Funciona offline?
 

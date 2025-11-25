@@ -1,0 +1,147 @@
+backend:
+  name: github
+  repo: esteban-mrh/adviento-2025
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+# For local development
+local_backend: true
+
+# Media files configuration
+media_folder: "public/media"
+public_folder: "/media"
+
+# Publishing mode
+publish_mode: editorial_workflow
+
+# Collections configuration
+collections:
+  # Calendar Days Collection
+  - name: "calendar"
+    label: "Días del Calendario"
+    label_singular: "Día"
+    folder: "content/calendar"
+    create: true
+    identifier_field: day
+    slug: "day-{{day}}"
+    format: json
+    extension: json
+    fields:
+      - { label: "Número de Día", name: "day", widget: "number", min: 1, max: 24, value_type: "int" }
+      - { label: "Tipo de Contenido", name: "type", widget: "select", options: ["text", "letter", "photo", "audio", "video", "url", "custom"] }
+      
+      # Text content fields
+      - label: "Contenido de Texto"
+        name: "textContent"
+        widget: "object"
+        condition:
+          field: type
+          value: text
+        fields:
+          - { label: "Mensaje", name: "message", widget: "text" }
+      
+      # Letter content fields
+      - label: "Contenido de Carta"
+        name: "letterContent"
+        widget: "object"
+        condition:
+          field: type
+          value: letter
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Texto", name: "text", widget: "markdown" }
+      
+      # Photo content fields
+      - label: "Contenido de Foto"
+        name: "photoContent"
+        widget: "object"
+        condition:
+          field: type
+          value: photo
+        fields:
+          - { label: "Imagen", name: "url", widget: "image" }
+          - { label: "Descripción", name: "caption", widget: "string", required: false }
+      
+      # Audio content fields
+      - label: "Contenido de Audio"
+        name: "audioContent"
+        widget: "object"
+        condition:
+          field: type
+          value: audio
+        fields:
+          - { label: "Archivo de Audio", name: "url", widget: "file" }
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descripción", name: "description", widget: "string", required: false }
+      
+      # Video content fields
+      - label: "Contenido de Video"
+        name: "videoContent"
+        widget: "object"
+        condition:
+          field: type
+          value: video
+        fields:
+          - { label: "URL del Video", name: "url", widget: "string" }
+          - { label: "Plataforma", name: "platform", widget: "select", options: ["youtube", "vimeo", "direct"] }
+          - { label: "Título", name: "title", widget: "string", required: false }
+          - { label: "Descripción", name: "description", widget: "string", required: false }
+      
+      # URL content fields
+      - label: "Contenido de URL"
+        name: "urlContent"
+        widget: "object"
+        condition:
+          field: type
+          value: url
+        fields:
+          - { label: "URL", name: "url", widget: "string" }
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descripción", name: "description", widget: "string", required: false }
+          - { label: "Texto del Botón", name: "buttonText", widget: "string", required: false, default: "Visitar enlace" }
+      
+      # Custom content fields
+      - label: "Contenido Personalizado"
+        name: "customContent"
+        widget: "object"
+        condition:
+          field: type
+          value: custom
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - label: "Elementos"
+            name: "items"
+            widget: "list"
+            field: { label: "Elemento", name: "item", widget: "string" }
+          - { label: "Mensaje Especial", name: "specialMessage", widget: "text", required: false }
+
+  # Announcement Messages Collection
+  - name: "announcements"
+    label: "Mensajes del Banner"
+    label_singular: "Mensaje"
+    folder: "content/announcements"
+    create: true
+    identifier_field: message
+    slug: "message-{{slug}}"
+    format: json
+    extension: json
+    fields:
+      - { label: "Mensaje", name: "message", widget: "string" }
+      - { label: "Orden", name: "order", widget: "number", value_type: "int", default: 1 }
+      - { label: "Activo", name: "active", widget: "boolean", default: true }
+
+  # Settings Collection
+  - name: "settings"
+    label: "Configuración"
+    files:
+      - label: "Configuración General"
+        name: "general"
+        file: "content/settings/general.json"
+        format: json
+        fields:
+          - { label: "Título del Sitio", name: "title", widget: "string", default: "Calendario de Adviento 2025 💕" }
+          - { label: "Año", name: "year", widget: "number", value_type: "int", default: 2025 }
+          - { label: "Mes (0-11)", name: "month", widget: "number", value_type: "int", default: 11, hint: "0=Enero, 11=Diciembre" }
+          - { label: "Modo Demo", name: "demoMode", widget: "boolean", default: true, hint: "Permitir abrir todos los días sin restricción de fecha" }
+          - { label: "Descripción del Sitio", name: "description", widget: "text", default: "Calendario de Adviento - Un regalo especial cada día" }
