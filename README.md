@@ -127,8 +127,8 @@ npm run preview
 # Ejecutar linter (ESLint)
 npm run lint
 
-# Preparar y desplegar a GitHub Pages
-npm run predeploy && npm run deploy
+# Desplegar a GitHub Pages
+npm run deploy  # Ejecuta automáticamente predeploy (build) antes de desplegar
 ```
 
 ## 📝 Guía de Personalización
