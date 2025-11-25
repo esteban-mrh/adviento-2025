@@ -544,7 +544,7 @@ El proyecto funciona en cualquier servicio que soporte aplicaciones estáticas:
 - **React Refresh** - Hot reloading para React
 
 ### Deployment
-- **[gh-pages](https://github.com/tpope/vim-pathogen)** - Deployment automatizado a GitHub Pages
+- **[gh-pages](https://github.com/tschaub/gh-pages)** - Deployment automatizado a GitHub Pages
 
 ### Características Técnicas
 
@@ -721,13 +721,15 @@ Si encuentras algún bug o tienes una sugerencia:
 
 ### ¿Cómo cambio el año del calendario?
 
-En `src/lib/dateUtils.ts`, modifica el parámetro `year`:
+En `src/lib/dateUtils.ts`, modifica el parámetro `year` (por ejemplo, para usar en 2026):
 
 ```typescript
 export const canOpenDay = (day: number, year = 2026, month = 11) => {
-  // Tu código aquí
+  // Cambia 2025 por el año que necesites
 };
 ```
+
+También actualiza el título en `index.html` y otros lugares donde aparezca el año.
 
 ### ¿Puedo tener más o menos de 24 días?
 
