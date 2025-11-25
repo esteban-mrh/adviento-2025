@@ -108,7 +108,7 @@ export async function loadGeneralSettings(): Promise<GeneralSettings> {
     title: "Calendario de Adviento 2025 💕",
     year: 2025,
     month: 11,
-    demoMode: true,
+    demoMode: false,
     description: "Calendario de Adviento - Un regalo especial cada día"
   };
 

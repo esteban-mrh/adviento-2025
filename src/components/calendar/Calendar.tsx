@@ -3,7 +3,7 @@ import DayCard from './DayCard';
 import { Modal } from '../modal';
 import { AnnouncementBanner, Countdown } from '../common';
 import { canOpenDay } from '../../lib/dateUtils';
-import { loadCalendarData } from '@/lib/contentLoader';
+import { loadCalendarData, loadGeneralSettings, type GeneralSettings } from '@/lib/contentLoader';
 import type { CalendarData } from '@/types/calendar';
 import { cn } from '@/lib/utils';
 
@@ -12,15 +12,20 @@ const Calendar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonPosition, setButtonPosition] = useState<{ x: number; y: number } | null>(null);
   const [calendarData, setCalendarData] = useState<CalendarData>({});
+  const [settings, setSettings] = useState<GeneralSettings | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
-  // Load calendar data from JSON files
+  // Load calendar data and settings from JSON files
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await loadCalendarData();
+        const [data, generalSettings] = await Promise.all([
+          loadCalendarData(),
+          loadGeneralSettings()
+        ]);
         setCalendarData(data);
+        setSettings(generalSettings);
       } catch (error) {
         console.error('Failed to load calendar data:', error);
       } finally {
@@ -32,7 +37,11 @@ const Calendar = () => {
   }, []);
 
   const handleDayClick = (day: number) => {
-    if (canOpenDay(day)) {
+    const year = settings?.year ?? 2025;
+    const month = settings?.month ?? 11;
+    const demoMode = settings?.demoMode ?? false;
+    
+    if (canOpenDay(day, year, month, demoMode)) {
       const cardElement = cardRefs.current[day];
       if (cardElement) {
         const rect = cardElement.getBoundingClientRect();
@@ -122,20 +131,26 @@ const Calendar = () => {
         'grid-cols-4 sm:grid-cols-4 md:grid-cols-6',
         'px-1 sm:px-2'
       )}>
-        {days.map((day) => (
-          <div
-            key={day}
-            ref={(el) => { cardRefs.current[day] = el; }}
-            className="animate-fadeIn"
-            style={{ animationDelay: `${day * 30}ms` }}
-          >
-            <DayCard
-              day={day}
-              canOpen={canOpenDay(day)}
-              onClick={() => handleDayClick(day)}
-            />
-          </div>
-        ))}
+        {days.map((day) => {
+          const year = settings?.year ?? 2025;
+          const month = settings?.month ?? 11;
+          const demoMode = settings?.demoMode ?? false;
+          
+          return (
+            <div
+              key={day}
+              ref={(el) => { cardRefs.current[day] = el; }}
+              className="animate-fadeIn"
+              style={{ animationDelay: `${day * 30}ms` }}
+            >
+              <DayCard
+                day={day}
+                canOpen={canOpenDay(day, year, month, demoMode)}
+                onClick={() => handleDayClick(day)}
+              />
+            </div>
+          );
+        })}
       </div>
 
 

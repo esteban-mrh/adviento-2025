@@ -18,7 +18,7 @@ collections:
   - name: "calendar"
     label: "Días del Calendario"
     label_singular: "Día"
-    folder: "content/calendar"
+    folder: "public/content/calendar"
     create: true
     identifier_field: day
     slug: "day-{{day}}"
@@ -117,7 +117,7 @@ collections:
   - name: "announcements"
     label: "Mensajes del Banner"
     label_singular: "Mensaje"
-    folder: "content/announcements"
+    folder: "public/content/announcements"
     create: true
     identifier_field: message
     slug: "message-{{slug}}"
@@ -134,7 +134,7 @@ collections:
     files:
       - label: "Configuración General"
         name: "general"
-        file: "content/settings/general.json"
+        file: "public/content/settings/general.json"
         format: json
         fields:
           - { label: "Título del Sitio", name: "title", widget: "string", default: "Calendario de Adviento 2025 💕" }
