@@ -6,14 +6,8 @@
   NODE_VERSION = "18"
   VITE_BASE_PATH = "/"
 
-# Allow Netlify internal endpoints (Identity, Functions, etc.) to be handled by Netlify
+# SPA rewrite: rewrite todo lo que NO empiece por "/.netlify/" a index.html
 [[redirects]]
-  from = "/.netlify/*"
-  to = "/.netlify/:splat"
-  status = 200
-
-# Your app SPA rewrite (keep this after the /.netlify rule)
-[[redirects]]
-  from = "/*"
+  from = "^/(?!\\.netlify/).*"
   to = "/index.html"
   status = 200
