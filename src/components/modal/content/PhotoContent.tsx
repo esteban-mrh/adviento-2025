@@ -1,5 +1,5 @@
 import type { PhotoContent as PhotoContentType } from '../../../types/calendar';
-import { Camera, Heart, Sparkles } from 'lucide-react';
+import { Heart, Sparkles } from 'lucide-react';
 
 // Placeholder image for when photo fails to load
 const PLACEHOLDER_IMAGE = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23ffd4e5" width="400" height="300"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="20" fill="%23d4576d"%3EFoto aquí%3C/text%3E%3C/svg%3E';

@@ -70,7 +70,7 @@ const Calendar = () => {
           Diciembre 2025
         </h1>
         <p className="text-base sm:text-lg text-pink-primary/70 font-medium">
-          Para Dome 💕
+          Para Mi Domi 💕
         </p>
       </header>
 
@@ -86,7 +86,7 @@ const Calendar = () => {
         {days.map((day) => (
           <div 
             key={day} 
-            ref={(el) => (cardRefs.current[day] = el)}
+            ref={(el) => { cardRefs.current[day] = el; }}
             className="animate-fadeIn"
             style={{ animationDelay: `${day * 30}ms` }}
           >

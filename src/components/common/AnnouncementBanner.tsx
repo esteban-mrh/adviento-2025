@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, JSX } from 'react';
 import { announcementMessages } from '../../lib/messages';
 import { Megaphone } from 'lucide-react';
 import { Card } from '../ui/card';
@@ -12,7 +12,7 @@ const AnnouncementBanner = (): JSX.Element | null => {
   useEffect(() => {
     if (announcementMessages.length === 0) return;
 
-    const interval: NodeJS.Timeout = setInterval(() => {
+    const interval = window.setInterval(() => {
       setIsVisible(false);
       
       setTimeout(() => {
