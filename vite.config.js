@@ -4,7 +4,9 @@ import { fileURLToPath } from 'url'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/adviento-2025/", 
+  // Use '/' for Netlify, '/adviento-2025/' for GitHub Pages
+  // Set VITE_BASE_PATH environment variable to override
+  base: process.env.VITE_BASE_PATH || "/adviento-2025/", 
   plugins: [react()],
   resolve: {
     alias: {

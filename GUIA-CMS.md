@@ -1,4 +1,4 @@
-# 📝 Guía del CMS - Decap CMS
+# 📝 Guía del CMS - Decap CMS con Netlify
 
 ## ¿Qué es Decap CMS?
 
@@ -7,80 +7,104 @@ Decap CMS (anteriormente Netlify CMS) es un sistema de gestión de contenidos **
 ## ✨ Características
 
 - ✅ **100% Gratuito** - Sin costos ocultos ni límites
-- ✅ **Compatible con GitHub Pages** - Funciona perfectamente con hosting estático
+- ✅ **Desplegado en Netlify** - Hosting automático con CDN global
 - ✅ **Basado en Git** - Los cambios se guardan directamente en tu repositorio
 - ✅ **Interfaz Visual** - Edita contenido sin tocar código
-- ✅ **Sin servidor backend** - No necesitas infraestructura adicional
-- ✅ **Autenticación con GitHub** - Usa tu cuenta de GitHub para acceder
+- ✅ **Autenticación con Auth0** - Sistema moderno y seguro integrado por Netlify
+- ✅ **Git Gateway** - Gestión automática de commits sin configurar OAuth manualmente
 
 ## 🚀 Cómo Acceder al CMS
 
+### En Producción (Netlify)
+
+1. **Tu sitio desplegado en Netlify**:
+   ```
+   https://tu-sitio.netlify.app/admin/
+   ```
+
+2. Haz clic en **"Login with Netlify Identity"**
+
+3. Ingresa tu email y contraseña (configurados durante el setup)
+
 ### En Desarrollo Local
 
-1. Inicia el servidor de desarrollo:
+1. **Instala el proxy local de Decap CMS**:
+   ```bash
+   npm install -g decap-server
+   ```
+
+2. **Inicia el proxy** (en una terminal):
+   ```bash
+   npx decap-server
+   ```
+   Esto ejecutará el servidor proxy en `http://localhost:8081`
+
+3. **Inicia el servidor de desarrollo** (en otra terminal):
    ```bash
    npm run dev
    ```
+   Tu app estará en `http://localhost:5173`
 
-2. Abre el navegador en:
+4. **Abre el navegador en**:
    ```
    http://localhost:5173/adviento-2025/admin/
    ```
 
-3. Para desarrollo local, puedes usar el modo **local backend** (ver configuración abajo)
-
-### En Producción (GitHub Pages)
-
-1. Despliega tu sitio:
-   ```bash
-   npm run deploy
-   ```
-
-2. Accede al CMS en:
-   ```
-   https://tu-usuario.github.io/adviento-2025/admin/
-   ```
-
-3. Haz clic en **"Login with GitHub"**
+5. **No necesitas login** - el backend local permite acceso directo
 
 ## 🔐 Configuración de Autenticación
 
-### Opción 1: Autenticación con GitHub (Recomendada)
+### Setup Completo con Netlify (Recomendado)
 
-Para usar el CMS en producción, necesitas configurar GitHub OAuth:
+Para usar el CMS en producción con autenticación moderna basada en Auth0:
 
-1. **Crear OAuth App en GitHub**:
-   - Ve a: https://github.com/settings/developers
-   - Clic en "New OAuth App"
-   - Configuración:
-     - **Application name**: Advent Calendar CMS
-     - **Homepage URL**: `https://tu-usuario.github.io/adviento-2025/`
-     - **Authorization callback URL**: `https://api.netlify.com/auth/done`
+1. **Crea una cuenta en Netlify** (Gratis):
+   - Ve a: https://app.netlify.com/signup
+   - Puedes usar tu cuenta de GitHub para registrarte
 
-2. **Habilitar Netlify Git Gateway** (Gratis):
-   - Crea una cuenta en https://app.netlify.com (es gratis)
-   - Importa tu repositorio (no necesitas hacer deploy en Netlify)
-   - En Settings → Identity, habilita Git Gateway
-   - En Identity → Services → Git Gateway, conecta con GitHub
-   - Invítate a ti mismo como usuario en Identity → Invites
+2. **Importa tu repositorio**:
+   - Clic en "Add new site" → "Import an existing project"
+   - Selecciona "Deploy with GitHub"
+   - Autoriza a Netlify
+   - Selecciona el repositorio `adviento-2025`
 
-3. La autenticación ya estará configurada y funcionando
+3. **Configuración de Build** (auto-detectada):
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+   - Clic en "Deploy site"
 
-### Opción 2: Desarrollo Local con Local Backend
+4. **Espera el despliegue** (1-2 minutos)
+   - Tu sitio estará disponible en: `https://nombre-aleatorio.netlify.app`
+   - Puedes cambiar el nombre en Site settings
 
-Para probar el CMS localmente sin configurar OAuth:
+5. **Habilita Netlify Identity** (usa Auth0 internamente):
+   - Ve a: **Site settings** → **Identity**
+   - Clic en **"Enable Identity"**
+   - **Registration**: Selecciona "Invite only" (recomendado)
 
-1. Instala el proxy local de Decap CMS:
-   ```bash
-   npx decap-server
+6. **Habilita Git Gateway**:
+   - En Identity settings → **Services**
+   - Encuentra **"Git Gateway"**
+   - Clic en **"Enable Git Gateway"**
+
+7. **Invítate como usuario**:
+   - Ve a la pestaña **Identity** en tu dashboard
+   - Clic en **"Invite users"**
+   - Ingresa tu email
+   - Revisa tu correo y acepta la invitación
+   - Crea tu contraseña
+
+8. **¡Listo!** Ahora puedes acceder al CMS:
+   ```
+   https://tu-sitio.netlify.app/admin/
    ```
 
-2. En otra terminal, inicia tu proyecto:
-   ```bash
-   npm run dev
-   ```
+### ¿Por qué Netlify Identity?
 
-3. El archivo `config.yml` ya tiene `local_backend: true` configurado
+- **Auth0 integrado**: Netlify Identity ahora usa Auth0 como backend, por lo que obtienes autenticación moderna y segura sin configurarla manualmente
+- **Sin OAuth manual**: No necesitas crear aplicaciones OAuth en GitHub
+- **Git Gateway**: Permite al CMS hacer commits sin acceso directo a GitHub
+- **Gratis**: El tier gratuito de Netlify es muy generoso
 
 ## 📋 Cómo Editar Contenido
 

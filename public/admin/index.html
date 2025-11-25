@@ -5,16 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>Admin - Calendario de Adviento</title>
+  <!-- Netlify Identity Widget - Required for authentication -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <!-- Decap CMS admin interface -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
   <script>
-    // Initialize Decap CMS with custom backend
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      // For local development
-      console.log('Running in local mode');
+    // Netlify Identity redirect handling
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
     }
   </script>
 </body>
