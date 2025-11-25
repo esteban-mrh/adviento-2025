@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: esteban-mrh/adviento-2025
+  name: git-gateway
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
 
 # For local development
 local_backend: true

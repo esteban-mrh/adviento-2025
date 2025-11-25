@@ -1,95 +1,85 @@
-# 🎉 CMS Integration Complete - Setup Instructions
+# 🎉 CMS Setup Guide - Netlify with Git Gateway
 
 ## ✅ What Has Been Done
 
-Your Advent Calendar project now includes **Decap CMS** (formerly Netlify CMS), a **100% free** content management system that works perfectly with GitHub Pages!
+Your Advent Calendar project now includes **Decap CMS** (formerly Netlify CMS), a **100% free** content management system that works with Netlify!
 
 ### Changes Made:
 
 1. **CMS Admin Interface**: Located at `/admin/`
-2. **Content Structure**: All calendar data converted to JSON format
-3. **Dynamic Loading**: React app now loads content from JSON files
-4. **Comprehensive Documentation**: Complete user guide in Spanish
+2. **Content Structure**: All calendar data in JSON format
+3. **Dynamic Loading**: React app loads content from JSON files
+4. **Netlify Configuration**: Ready for deployment with `netlify.toml`
+5. **Git Gateway Backend**: Uses Netlify Identity for authentication
 
-## 🚀 Next Steps to Complete Setup
+## 🚀 Complete Setup Instructions
 
-### Step 1: Test Locally (Optional)
+### Step 1: Deploy to Netlify
 
-```bash
-# Start the development server
-npm run dev
+1. **Create a Netlify account** (FREE): https://app.netlify.com/signup
 
-# Visit the admin panel
-# Open: http://localhost:5173/adviento-2025/admin/
-```
-
-### Step 2: Deploy to GitHub Pages
-
-```bash
-# Build and deploy
-npm run deploy
-```
-
-Wait 1-2 minutes for GitHub Pages to update.
-
-### Step 3: Configure Authentication for Production
-
-To use the CMS in production, you need to set up authentication. **Choose ONE option:**
-
-#### Option A: GitHub OAuth with Netlify Git Gateway (Recommended - Easy)
-
-1. **Create a Netlify account** (it's FREE): https://app.netlify.com
-   - No need to deploy your site to Netlify
-   - We're only using it for authentication
-
-2. **Import your GitHub repository:**
+2. **Import your repository**:
    - Click "Add new site" → "Import an existing project"
-   - Connect to GitHub and select `adviento-2025`
-   - **Important**: You can skip the build settings (click "Deploy site")
+   - Choose "Deploy with GitHub"
+   - Authorize Netlify to access your GitHub account
+   - Select the `adviento-2025` repository
 
-3. **Enable Identity & Git Gateway:**
-   - Go to: Site settings → Identity → Enable Identity
-   - Go to: Site settings → Identity → Services → Git Gateway
-   - Click "Enable Git Gateway"
+3. **Configure build settings** (should be auto-detected):
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+   - **Base directory**: (leave empty)
+   
+4. **Click "Deploy site"**
 
-4. **Invite yourself as a user:**
-   - Go to: Identity → Invites
-   - Click "Invite users"
-   - Enter your email
-   - Check your email and accept the invitation
+5. **Wait for deployment** (1-2 minutes)
+   - Your site will be live at: `https://random-name-123.netlify.app`
+   - You can customize the domain later in Site settings
 
-5. **Done!** Now you can access:
-   ```
-   https://esteban-mrh.github.io/adviento-2025/admin/
-   ```
-   And login with your email/password.
+### Step 2: Enable Identity (Auth0 Integration)
 
-#### Option B: Direct GitHub OAuth (More technical)
+Netlify Identity now uses **Auth0** behind the scenes for authentication:
 
-1. **Create GitHub OAuth App:**
-   - Go to: https://github.com/settings/developers
-   - Click "New OAuth App"
-   - Fill in:
-     - Application name: `Advent Calendar CMS`
-     - Homepage URL: `https://esteban-mrh.github.io/adviento-2025/`
-     - Authorization callback URL: `https://esteban-mrh.github.io/adviento-2025/admin/`
+1. **Enable Netlify Identity**:
+   - Go to your site dashboard
+   - Navigate to: **Site settings** → **Identity**
+   - Click **"Enable Identity"**
 
-2. **Get Client ID and Secret:**
-   - After creating the app, copy your Client ID
-   - Generate and copy a new Client Secret
+2. **Configure Identity settings**:
+   - **Registration preferences**: Set to "Invite only" (recommended)
+   - **External providers** (optional): You can enable GitHub, Google, etc.
+   - **Services**: Will configure Git Gateway in next step
 
-3. **Set up authentication server:**
-   - You'll need to deploy a simple authentication server
-   - Options: Netlify Functions, Vercel Functions, or AWS Lambda
-   - This is more complex - **we recommend Option A instead**
+3. **Enable Git Gateway**:
+   - In Identity settings, go to **Services** section
+   - Find **"Git Gateway"** and click **"Enable Git Gateway"**
+   - This allows the CMS to commit to your GitHub repo
+
+### Step 3: Invite Yourself as a User
+
+1. **Go to Identity tab** in your Netlify site dashboard
+
+2. **Click "Invite users"**
+
+3. **Enter your email address** and send invitation
+
+4. **Check your email** for the invitation link
+
+5. **Click the link** and **set your password**
+
+6. **Done!** You now have admin access
 
 ### Step 4: Access Your CMS
 
-Once authentication is configured:
+1. Visit your CMS admin panel:
+   ```
+   https://your-site-name.netlify.app/admin/
+   ```
 
-1. Visit: `https://esteban-mrh.github.io/adviento-2025/admin/`
-2. Click "Login with Netlify Identity" (Option A) or "Login with GitHub" (Option B)
-3. Start editing your content!
+2. Click **"Login with Netlify Identity"**
+
+3. Enter your **email and password** (that you set in Step 3)
+
+4. **Start editing content!**
 
 ## 📖 How to Use the CMS
 
@@ -97,7 +87,7 @@ Once authentication is configured:
 1. Go to "Días del Calendario" in the sidebar
 2. Click on any day (1-24)
 3. Edit the content
-4. Click "Save" then "Publish"
+4. Click "Save" then "Publish now"
 
 ### Edit Banner Messages:
 1. Go to "Mensajes del Banner"
@@ -116,72 +106,123 @@ Once authentication is configured:
 2. Modify site title, year, demo mode, etc.
 3. Save and publish
 
-## 📚 Documentation
+## 🛠️ Local Development
 
-- **Complete User Guide**: See `GUIA-CMS.md` for detailed instructions in Spanish
-- **Updated README**: The main README now includes CMS sections
-- **Decap CMS Docs**: https://decapcms.org/docs/
+### Option 1: Using Local Backend Proxy (Recommended)
 
-## 🎯 Key Features
+1. **Install Decap CMS proxy**:
+   ```bash
+   npm install -g decap-server
+   ```
 
-✅ **100% Free** - No costs, no limits
-✅ **No Backend Required** - Works with static hosting
-✅ **Git-based** - Changes saved directly to GitHub
-✅ **User-friendly** - Visual interface for editing
-✅ **Media Upload** - Manage images, audio, video
-✅ **Editorial Workflow** - Draft → Review → Publish
+2. **Start the proxy** (in one terminal):
+   ```bash
+   npx decap-server
+   ```
+   This will run on `http://localhost:8081`
+
+3. **Start your dev server** (in another terminal):
+   ```bash
+   npm run dev
+   ```
+   This will run on `http://localhost:5173`
+
+4. **Access the local CMS**:
+   ```
+   http://localhost:5173/adviento-2025/admin/
+   ```
+   
+5. **No login required** - local backend allows direct access
+
+### Option 2: Using Production Identity (Advanced)
+
+1. Start dev server: `npm run dev`
+2. Access: `http://localhost:5173/adviento-2025/admin/`
+3. Login with your Netlify Identity credentials
+4. This will commit directly to your repo
+
+## 🌐 Custom Domain (Optional)
+
+1. **Go to Site settings** → **Domain management**
+2. **Add custom domain** or **Change site name**
+3. For custom domain: Update DNS settings with your provider
+4. Netlify provides free SSL certificates
 
 ## 🔄 Content Update Workflow
 
 When you edit content through the CMS:
 
 1. **Edit** in the CMS admin panel
-2. **Save** to create a draft
-3. **Publish** to commit to GitHub
-4. **Wait 1-2 minutes** for GitHub Pages to rebuild
-5. **See your changes** on the live site!
+2. **Save** to create a draft (Editorial Workflow)
+3. **Publish** to commit changes to GitHub
+4. **Netlify auto-rebuilds** (1-2 minutes)
+5. **Changes are live!**
 
 ## ⚠️ Important Notes
 
-- **Content Location**: Your content is now in JSON files under `content/` and `public/content/`
-- **Backward Compatibility**: The old `calendarData.ts` file is still there but is no longer used by the app
-- **Build Process**: When you run `npm run build`, the content files are automatically included
-- **GitHub Pages**: Make sure GitHub Pages is enabled in your repo settings
+### Authentication
+- **Netlify Identity** uses **Auth0** under the hood (modern, secure)
+- You don't need to configure Auth0 directly - Netlify handles it
+- Old "Netlify Identity" widget is still supported but uses Auth0 backend
+
+### Content Location
+- Content is stored as JSON files in `content/` directory
+- Media files go to `public/media/`
+- All changes are committed to your GitHub repository
+
+### Git Gateway
+- Allows CMS to write to GitHub without GitHub OAuth
+- Uses your Netlify Identity for authentication
+- More secure than direct GitHub access
+
+## 🎯 Key Features
+
+✅ **100% Free** - Netlify free tier is generous
+✅ **Auto-Deploy** - Push to GitHub → auto-deploy
+✅ **CDN** - Global content delivery network
+✅ **SSL** - Free HTTPS certificates
+✅ **Git-based** - All changes versioned in Git
+✅ **Auth0 Integration** - Modern, secure authentication
+✅ **No server management** - Fully managed platform
 
 ## 🐛 Troubleshooting
 
 ### CMS not loading?
-- Check that `public/admin/index.html` and `public/admin/config.yml` exist
-- Verify the site is deployed to GitHub Pages
-- Check browser console for errors
+- Verify site is deployed to Netlify
+- Check that Identity is enabled
+- Clear browser cache and try again
 
 ### Can't login?
-- Make sure you've completed Step 3 (authentication setup)
-- Try clearing browser cache
-- Verify Git Gateway is enabled (Option A) or OAuth app is configured (Option B)
+- Make sure you accepted the email invitation
+- Check if Identity is enabled in Netlify settings
+- Verify Git Gateway is enabled
+- Try password reset if needed
 
 ### Changes not appearing?
-- Make sure you clicked "Publish" (not just "Save")
-- Wait 1-2 minutes for GitHub Pages to rebuild
-- Clear browser cache and refresh
+- Make sure you clicked "Publish now" (not just "Save")
+- Wait 1-2 minutes for Netlify to rebuild
+- Check the deploy log in Netlify dashboard
+- Clear browser cache
 
-### Media files not loading?
-- Files must be under 10MB
-- Check that files are in `public/media/`
-- Verify file formats are web-compatible (JPG, PNG, MP3, MP4)
+### "Unable to access" error?
+- Verify Git Gateway is enabled
+- Check that your user has the right permissions
+- Re-invite yourself if needed
 
-## 🎓 Learn More
+### Local backend not working?
+- Make sure `decap-server` is running on port 8081
+- Check that `local_backend: true` is in config.yml
+- Restart both the proxy and dev server
 
-Read the complete guide:
-```bash
-# Open the CMS guide
-cat GUIA-CMS.md
-```
+## 📚 Additional Resources
 
-Or view it on GitHub after pushing your changes.
+- [Netlify Docs](https://docs.netlify.com/)
+- [Netlify Identity Docs](https://docs.netlify.com/security/secure-access-to-sites/identity/)
+- [Decap CMS Docs](https://decapcms.org/docs/)
+- [Git Gateway Guide](https://docs.netlify.com/security/secure-access-to-sites/identity/git-gateway/)
 
 ## 🎉 You're All Set!
 
-Your Advent Calendar now has a professional CMS! You can edit all content without touching code.
+Your Advent Calendar is now fully integrated with Netlify and has a professional CMS powered by Auth0!
 
 **Happy editing! 💕🎄✨**

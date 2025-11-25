@@ -143,13 +143,15 @@ Este proyecto incluye **Decap CMS** (anteriormente Netlify CMS), un sistema de g
 - ✅ Subir y gestionar imágenes, audio y video
 - ✅ Modificar mensajes del banner
 - ✅ Cambiar configuraciones generales
-- ✅ Compatible con GitHub Pages (sin servidor backend necesario)
+- ✅ Autenticación moderna con Auth0 (integrado por Netlify)
+- ✅ Despliegue automático en Netlify con CDN global
 
 **Accede al CMS:**
-- **Desarrollo**: `http://localhost:5173/adviento-2025/admin/`
-- **Producción**: `https://tu-usuario.github.io/adviento-2025/admin/`
+- **Desarrollo**: `http://localhost:5173/adviento-2025/admin/` (con backend local)
+- **Producción**: `https://tu-sitio.netlify.app/admin/`
 
 **📖 [Lee la Guía Completa del CMS](./GUIA-CMS.md)** para aprender a usar el sistema.
+**🚀 [Guía de Setup en Netlify](./SETUP-CMS.md)** para configurar el despliegue.
 
 ---
 
@@ -159,10 +161,11 @@ Tienes **dos opciones** para editar el contenido:
 
 #### Opción A: Usar el CMS (Recomendado - No requiere código)
 
-1. Accede a `/admin/` en tu sitio
-2. Haz login con tu cuenta de GitHub
-3. Edita los días del calendario visualmente
-4. Guarda y publica los cambios
+1. Despliega tu sitio en Netlify (ver sección de Despliegue)
+2. Accede a `/admin/` en tu sitio de Netlify
+3. Haz login con Netlify Identity (Auth0)
+4. Edita los días del calendario visualmente
+5. Guarda y publica los cambios
 
 Ver la [Guía del CMS](./GUIA-CMS.md) para más detalles.
 
@@ -504,9 +507,52 @@ El fondo principal tiene un gradiente multicapa configurable en `Calendar.tsx`:
 
 ## 🌐 Despliegue (Deployment)
 
-### GitHub Pages (Configurado y Recomendado)
+### Netlify (Recomendado - Con CMS Integrado)
 
-El proyecto ya está configurado para desplegar automáticamente a GitHub Pages:
+**Para usar el CMS, debes desplegar en Netlify.** El proyecto incluye configuración completa con `netlify.toml`:
+
+```bash
+# No necesitas hacer nada especial - solo sigue estos pasos:
+```
+
+**Pasos para desplegar:**
+
+1. **Crea una cuenta en Netlify** (GRATIS): https://app.netlify.com/signup
+
+2. **Importa tu repositorio**:
+   - Clic en "Add new site" → "Import an existing project"
+   - Selecciona "Deploy with GitHub"
+   - Autoriza a Netlify y selecciona el repositorio `adviento-2025`
+
+3. **Configuración de Build** (auto-detectada por `netlify.toml`):
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+   - Clic en "Deploy site"
+
+4. **Habilita Identity & Git Gateway**:
+   - Ve a Site settings → Identity → Enable Identity
+   - Ve a Services → Git Gateway → Enable Git Gateway
+   - Invítate como usuario en Identity → Invites
+
+5. **Accede al CMS**:
+   ```
+   https://tu-sitio.netlify.app/admin/
+   ```
+
+**Ventajas de Netlify:**
+- ✅ CMS totalmente funcional con Auth0
+- ✅ Deploy automático en cada push
+- ✅ CDN global incluido
+- ✅ SSL/HTTPS gratuito
+- ✅ Git Gateway para el CMS
+- ✅ Preview deployments
+- ✅ 100% Gratuito para proyectos personales
+
+**📖 [Guía completa de setup en Netlify](./SETUP-CMS.md)**
+
+### GitHub Pages (Sin CMS)
+
+Si no necesitas el CMS, puedes usar GitHub Pages:
 
 ```bash
 # 1. Compilar el proyecto
@@ -518,13 +564,15 @@ npm run deploy
 
 El sitio estará disponible en: `https://[tu-usuario].github.io/adviento-2025/`
 
+**Nota:** GitHub Pages no soporta el CMS porque no tiene autenticación server-side. Para usar el CMS, **debes usar Netlify**.
+
 **Configuración Existente:**
 - ✅ `gh-pages` package instalado
 - ✅ Scripts `predeploy` y `deploy` configurados
 - ✅ Homepage definido en `package.json`
 - ✅ Base path configurada para GitHub Pages
 
-### Vercel (Alternativa Simple)
+### Vercel (Alternativa sin CMS)
 
 1. Crea una cuenta en [Vercel](https://vercel.com)
 2. Importa el repositorio desde GitHub
@@ -536,14 +584,7 @@ El sitio estará disponible en: `https://[tu-usuario].github.io/adviento-2025/`
 - Output directory: `dist`
 - Framework: Vite
 
-### Netlify (Alternativa)
-
-1. Crea una cuenta en [Netlify](https://netlify.com)
-2. Conecta tu repositorio de GitHub
-3. Configuración:
-   - **Build command**: `npm run build`
-   - **Publish directory**: `dist`
-4. Deploy automático
+**Nota:** Vercel tampoco soporta el CMS directamente. Para CMS, usa **Netlify**.
 
 ### Otras Plataformas
 
@@ -807,12 +848,23 @@ Usa herramientas de compresión:
 
 ¡Este proyecto ya incluye un CMS integrado! **Decap CMS** te permite editar todo el contenido sin tocar código:
 
-1. Accede a `/admin/` en tu sitio desplegado
-2. Haz login con tu cuenta de GitHub
-3. Edita días del calendario, mensajes y configuración
-4. **100% gratuito** y compatible con GitHub Pages
+1. **Despliega en Netlify** (es GRATIS y necesario para el CMS)
+2. Configura Identity y Git Gateway en Netlify
+3. Accede a `/admin/` en tu sitio de Netlify
+4. Haz login con Netlify Identity (usa Auth0 internamente)
+5. Edita contenido visualmente
 
-**📖 [Lee la Guía Completa del CMS](./GUIA-CMS.md)** para instrucciones detalladas de configuración y uso.
+**📖 [Lee la Guía Completa del CMS](./GUIA-CMS.md)** y **[Setup en Netlify](./SETUP-CMS.md)** para instrucciones detalladas.
+
+**¿Por qué Netlify?**
+- Netlify Identity (con Auth0) es gratuito y fácil de configurar
+- Git Gateway permite al CMS hacer commits automáticamente
+- No necesitas configurar OAuth manualmente
+- La antigua Netlify Identity está deprecada, ahora usa Auth0 moderno
+
+### ¿Puedo usar GitHub Pages con el CMS?
+
+No directamente. GitHub Pages es hosting estático y el CMS requiere autenticación server-side. **Debes usar Netlify** para el CMS. Sin embargo, tu código sigue en GitHub y el CMS hace commits a tu repositorio.
 
 ### ¿Funciona offline?
 
