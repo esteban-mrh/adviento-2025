@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import DayCard from './DayCard';
 import { Modal } from '../modal';
 import { AnnouncementBanner, Countdown } from '../common';
@@ -36,12 +36,15 @@ const Calendar = () => {
     loadData();
   }, []);
 
+  // Memoize calendar settings to avoid recalculating on every render
+  const calendarSettings = useMemo(() => ({
+    year: settings?.year ?? 2025,
+    month: settings?.month ?? 11,
+    demoMode: settings?.demoMode ?? false,
+  }), [settings]);
+
   const handleDayClick = (day: number) => {
-    const year = settings?.year ?? 2025;
-    const month = settings?.month ?? 11;
-    const demoMode = settings?.demoMode ?? false;
-    
-    if (canOpenDay(day, year, month, demoMode)) {
+    if (canOpenDay(day, calendarSettings.year, calendarSettings.month, calendarSettings.demoMode)) {
       const cardElement = cardRefs.current[day];
       if (cardElement) {
         const rect = cardElement.getBoundingClientRect();
@@ -131,26 +134,20 @@ const Calendar = () => {
         'grid-cols-4 sm:grid-cols-4 md:grid-cols-6',
         'px-1 sm:px-2'
       )}>
-        {days.map((day) => {
-          const year = settings?.year ?? 2025;
-          const month = settings?.month ?? 11;
-          const demoMode = settings?.demoMode ?? false;
-          
-          return (
-            <div
-              key={day}
-              ref={(el) => { cardRefs.current[day] = el; }}
-              className="animate-fadeIn"
-              style={{ animationDelay: `${day * 30}ms` }}
-            >
-              <DayCard
-                day={day}
-                canOpen={canOpenDay(day, year, month, demoMode)}
-                onClick={() => handleDayClick(day)}
-              />
-            </div>
-          );
-        })}
+        {days.map((day) => (
+          <div
+            key={day}
+            ref={(el) => { cardRefs.current[day] = el; }}
+            className="animate-fadeIn"
+            style={{ animationDelay: `${day * 30}ms` }}
+          >
+            <DayCard
+              day={day}
+              canOpen={canOpenDay(day, calendarSettings.year, calendarSettings.month, calendarSettings.demoMode)}
+              onClick={() => handleDayClick(day)}
+            />
+          </div>
+        ))}
       </div>
 
 
