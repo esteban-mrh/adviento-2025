@@ -18,7 +18,20 @@
       window.netlifyIdentity.on("init", user => {
         if (!user) {
           window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
+            // Get base path from current URL
+            const currentPath = window.location.pathname;
+            // If we're already in /admin/, just reload
+            if (currentPath.includes('/admin/')) {
+              window.location.href = currentPath;
+            } else {
+              // Construct admin path based on current location
+              const pathParts = currentPath.split('/').filter(p => p);
+              if (pathParts.length > 0 && pathParts[0] === 'adviento-2025') {
+                window.location.href = '/adviento-2025/admin/';
+              } else {
+                window.location.href = '/admin/';
+              }
+            }
           });
         }
       });

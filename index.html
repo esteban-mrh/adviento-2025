@@ -19,7 +19,16 @@
         window.netlifyIdentity.on("init", user => {
           if (!user) {
             window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
+              // Get base path from current URL
+              const currentPath = window.location.pathname;
+              const pathParts = currentPath.split('/').filter(p => p);
+              // Check if we're in a subpath (like GitHub Pages /adviento-2025/)
+              if (pathParts.length > 0 && pathParts[0] === 'adviento-2025') {
+                window.location.href = '/adviento-2025/admin/';
+              } else {
+                // Default to root admin for Netlify
+                window.location.href = '/admin/';
+              }
             });
           }
         });
