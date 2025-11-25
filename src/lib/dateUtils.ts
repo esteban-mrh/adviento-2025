@@ -7,13 +7,11 @@
  * @param {number} day - Day number (1-24)
  * @param {number} year - Year (e.g., 2025)
  * @param {number} month - Month (0-11, where 11 is December)
+ * @param {boolean} demoMode - If true, allows all days to be opened for testing
  * @returns {boolean} - True if the day can be opened
  */
-export const canOpenDay = (day: number, year = 2025, month = 11) => {
-  // DEMO MODE: Set to true to allow all days to be opened for testing
-  const DEMO_MODE = true;
-  
-  if (DEMO_MODE) return true;
+export const canOpenDay = (day: number, year = 2025, month = 11, demoMode = false) => {
+  if (demoMode) return true;
   
   const now = new Date();
   const targetDate = new Date(year, month, day);

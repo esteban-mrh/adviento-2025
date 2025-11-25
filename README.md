@@ -1,98 +1,54 @@
 # 🎄 Calendario de Adviento 2025 ✨
 
-Un calendario de adviento interactivo y elegante creado con **React 19**, **TypeScript** y **Tailwind CSS**, diseñado especialmente para compartir momentos especiales durante el mes de diciembre.
+Un calendario de adviento interactivo y elegante creado con **React 19**, **TypeScript** y **Tailwind CSS**, diseñado para compartir momentos especiales durante el mes de diciembre.
 
-![Calendario de Adviento](https://github.com/user-attachments/assets/e8c9ac3e-0286-4fbb-9d8b-28bbc82de374)
+![Calendario de Adviento - Demo Mode Off](https://github.com/user-attachments/assets/4ae25d7d-d7b7-40db-820d-3477fa796688)
 
 ## 🌟 Características Principales
 
 ### ✨ Experiencia Interactiva
-- **24 Días de Sorpresas**: Contenido único y especial para cada día del 1 al 24 de diciembre
-- **Control de Acceso por Fecha**: Los días solo se pueden abrir en su fecha correspondiente (configurable en modo demo)
-- **Animaciones Suaves**: Transiciones elegantes y animaciones de apertura para cada día
-- **Banner de Anuncios Rotativo**: Mensajes especiales que rotan automáticamente cada 8 segundos
-- **Cuenta Regresiva**: Contador dinámico hasta el próximo día disponible
+- **24 Días de Sorpresas**: Contenido único para cada día del 1 al 24 de diciembre
+- **Control de Acceso por Fecha**: Los días solo se pueden abrir en su fecha correspondiente (configurable)
+- **Modo Demo**: Permite probar el calendario completo sin restricciones de fecha
+- **Animaciones Elegantes**: Transiciones suaves y efectos visuales encantadores
+- **Banner de Anuncios**: Mensajes rotativos personalizables
+- **Cuenta Regresiva**: Contador dinámico hasta el inicio del calendario
 
-### 🎨 Diseño y UI
-- **Diseño Moderno**: Paleta de colores pasteles navideños (rosados, dorados y crema)
+### 🎨 Diseño Moderno
+- **Paleta Navideña**: Colores pasteles en tonos rosa, dorado y crema
 - **Totalmente Responsive**: Optimizado para móviles, tablets y desktop
-- **Efectos Visuales**: Gradientes suaves, partículas brillantes animadas y efectos de hover
-- **Componentes shadcn/ui**: Integración con componentes de interfaz de alta calidad
+- **Efectos Visuales**: Gradientes suaves, partículas brillantes animadas
+- **Componentes shadcn/ui**: Interfaz de alta calidad
 
 ### 📦 Tipos de Contenido Soportados
 - 📝 **Texto Simple**: Mensajes cortos y dulces
-- 💌 **Cartas**: Textos largos con formato elegante y título
-- 📸 **Fotos**: Visualizador de imágenes con caption opcional
-- 🎵 **Audio**: Reproductor de audio con controles personalizados
-- 🎥 **Video**: Reproductor de video (YouTube, Vimeo, o directo)
-- 🔗 **URL**: Enlaces externos con descripción y botón personalizable
-- ✨ **Contenido Personalizado**: Listas, elementos mixtos y mensajes especiales
+- 💌 **Cartas**: Textos largos con formato elegante
+- 📸 **Fotos**: Galería con descripciones
+- 🎵 **Audio**: Reproductor de audio personalizado
+- 🎥 **Video**: Soporte para YouTube, Vimeo y archivos directos
+- 🔗 **URLs**: Enlaces externos con botones personalizables
+- ✨ **Contenido Personalizado**: Listas y elementos mixtos
 
-## 🏗️ Arquitectura del Proyecto
+### 🎉 Sistema de Gestión de Contenidos (CMS)
 
-### Componentes Principales
+**¡Edita todo el contenido sin tocar código!** Incluye **Decap CMS** integrado con Netlify:
 
-```
-src/
-├── components/
-│   ├── calendar/          # Componentes del calendario
-│   │   ├── Calendar.tsx   # Componente principal con lógica
-│   │   └── DayCard.tsx    # Tarjeta individual para cada día
-│   ├── modal/             # Sistema de modales
-│   │   ├── Modal.tsx      # Modal principal
-│   │   ├── OpeningAnimations.tsx  # Animaciones de apertura
-│   │   └── content/       # Componentes de contenido
-│   │       ├── TextContent.tsx
-│   │       ├── LetterContent.tsx
-│   │       ├── PhotoContent.tsx
-│   │       ├── AudioContent.tsx
-│   │       ├── VideoContent.tsx
-│   │       ├── URLContent.tsx
-│   │       └── CustomContent.tsx
-│   ├── common/            # Componentes comunes
-│   │   ├── AnnouncementBanner.tsx  # Banner de anuncios
-│   │   ├── Countdown.tsx  # Cuenta regresiva
-│   │   └── Icons.tsx      # Iconos personalizados
-│   └── ui/                # Componentes UI de shadcn
-│       ├── button.tsx
-│       ├── card.tsx
-│       ├── badge.tsx
-│       └── dialog.tsx
-├── lib/                   # Utilidades y datos
-│   ├── calendarData.ts    # Configuración de contenido de cada día
-│   ├── messages.ts        # Mensajes del banner de anuncios
-│   ├── dateUtils.ts       # Utilidades de fecha y modo demo
-│   └── utils.ts           # Funciones auxiliares
-└── types/
-    └── calendar.ts        # Definiciones de tipos TypeScript
-```
+- ✅ Interfaz visual intuitiva para editar días del calendario
+- ✅ Gestión de imágenes, audio y video
+- ✅ Modificación de mensajes del banner
+- ✅ Configuración del modo demo
+- ✅ Autenticación segura con Auth0 (vía Netlify)
+- ✅ Despliegue automático
 
-### Componentes de Contenido
-
-Cada tipo de contenido tiene su propio componente especializado:
-
-- **TextContent**: Mensajes de texto con animaciones de fade-in
-- **LetterContent**: Cartas formateadas con título y cuerpo de texto
-- **PhotoContent**: Imágenes con marco decorativo y caption opcional
-- **AudioContent**: Reproductor con controles, título y descripción
-- **VideoContent**: Reproductor de video con soporte para múltiples plataformas
-- **URLContent**: Enlaces externos con botón y descripción personalizables
-- **CustomContent**: Listas animadas con elementos y mensaje especial
-
-### Componentes Comunes
-
-- **AnnouncementBanner**: Banner superior con mensajes rotativos editables
-- **Countdown**: Contador dinámico hasta el próximo día disponible
-- **DayCard**: Tarjeta animada para cada día con estado (bloqueado/disponible)
-- **Modal**: Modal con animaciones de apertura y cierre suaves
-- **Icons**: Iconos personalizados de Lucide React
+**Acceso al CMS:**
+- **Producción**: `https://tu-sitio.netlify.app/admin/`
+- **Documentación**: Ver [GUIA-CMS.md](./GUIA-CMS.md)
 
 ## 🚀 Inicio Rápido
 
 ### Prerequisitos
-
-- **Node.js** 16+ instalado
-- **npm** o **yarn** como gestor de paquetes
+- Node.js 16+ instalado
+- npm o yarn
 
 ### Instalación
 
@@ -100,7 +56,7 @@ Cada tipo de contenido tiene su propio componente especializado:
 # 1. Clonar el repositorio
 git clone https://github.com/esteban-mrh/adviento-2025.git
 
-# 2. Entrar al directorio del proyecto
+# 2. Entrar al directorio
 cd adviento-2025
 
 # 3. Instalar dependencias
@@ -110,784 +66,261 @@ npm install
 npm run dev
 ```
 
-La aplicación estará disponible en **`http://localhost:5173/`**
+La aplicación estará disponible en `http://localhost:5173/adviento-2025/`
 
 ### 📜 Comandos Disponibles
 
 ```bash
-# Iniciar servidor de desarrollo con hot reload
-npm run dev
-
-# Compilar para producción (optimizado)
-npm run build
-
-# Previsualizar build de producción localmente
-npm run preview
-
-# Ejecutar linter (ESLint)
-npm run lint
-
-# Desplegar a GitHub Pages
-npm run deploy  # Ejecuta automáticamente predeploy (build) antes de desplegar
+npm run dev      # Iniciar servidor de desarrollo
+npm run build    # Compilar para producción
+npm run preview  # Previsualizar build local
+npm run lint     # Ejecutar linter
+npm run deploy   # Desplegar a GitHub Pages
 ```
 
-## 📝 Guía de Personalización
+## ⚙️ Configuración
 
-### 🎉 NUEVO: Sistema de Gestión de Contenidos (CMS)
+### Modo Demo
 
-**¡Ahora puedes editar el contenido sin tocar código!**
+El modo demo se configura desde el CMS o editando `public/content/settings/general.json`:
 
-Este proyecto incluye **Decap CMS** (anteriormente Netlify CMS), un sistema de gestión de contenidos **100% gratuito** que te permite:
-
-- ✅ Editar días del calendario mediante una interfaz visual
-- ✅ Subir y gestionar imágenes, audio y video
-- ✅ Modificar mensajes del banner
-- ✅ Cambiar configuraciones generales
-- ✅ Autenticación moderna con Auth0 (integrado por Netlify)
-- ✅ Despliegue automático en Netlify con CDN global
-
-**Accede al CMS:**
-- **Desarrollo**: `http://localhost:5173/adviento-2025/admin/` (con backend local)
-- **Producción**: `https://tu-sitio.netlify.app/admin/`
-
-**📖 [Lee la Guía Completa del CMS](./GUIA-CMS.md)** para aprender a usar el sistema.
-**🚀 [Guía de Setup en Netlify](./SETUP-CMS.md)** para configurar el despliegue.
-
----
-
-### 1. Configurar Contenido de los Días
-
-Tienes **dos opciones** para editar el contenido:
-
-#### Opción A: Usar el CMS (Recomendado - No requiere código)
-
-1. Despliega tu sitio en Netlify (ver sección de Despliegue)
-2. Accede a `/admin/` en tu sitio de Netlify
-3. Haz login con Netlify Identity (Auth0)
-4. Edita los días del calendario visualmente
-5. Guarda y publica los cambios
-
-Ver la [Guía del CMS](./GUIA-CMS.md) para más detalles.
-
-#### Opción B: Editar archivos JSON directamente
-
-El contenido se almacena en archivos JSON en `content/calendar/`. Cada día tiene su propio archivo (ejemplo: `day-1.json`, `day-2.json`, etc.).
-
-#### Opción C: Editar código TypeScript (Método antiguo)
-
-También puedes editar **`src/lib/calendarData.ts`** directamente si prefieres trabajar con código.
-
-#### Estructura Básica
-
-```typescript
-export const calendarData: CalendarData = {
-  1: {
-    type: 'text',
-    content: {
-      message: 'Tu mensaje aquí'
-    }
-  },
-  2: {
-    type: 'letter',
-    content: {
-      title: 'Título de tu carta',
-      text: 'Contenido de la carta...'
-    }
-  },
-  // ... días 3-24
-}
-```
-
-#### Tipos de Contenido Disponibles
-
-##### 1️⃣ Text (Texto Simple)
-Perfecto para mensajes cortos y directos.
-
-```typescript
+```json
 {
-  type: 'text',
-  content: {
-    message: 'Un mensaje dulce y breve 💕'
-  }
+  "demoMode": false,  // false = días bloqueados, true = todos disponibles
+  "year": 2025,
+  "month": 11,        // 11 = Diciembre (0-indexed)
+  "title": "Calendario de Adviento 2025 💕"
 }
 ```
 
-##### 2️⃣ Letter (Carta)
-Para textos más largos y personales con formato.
+**Demo Mode OFF** (producción): Los días se abren solo en su fecha correspondiente
 
-```typescript
+![Demo Mode Off](https://github.com/user-attachments/assets/4ae25d7d-d7b7-40db-820d-3477fa796688)
+
+**Demo Mode ON** (desarrollo): Todos los días están disponibles para pruebas
+
+![Demo Mode On](https://github.com/user-attachments/assets/85a5c9b9-f5be-4f3e-baf2-46de7de1b720)
+
+### Personalizar Contenido
+
+#### Opción 1: Usar el CMS (Recomendado)
+1. Despliega en Netlify
+2. Accede a `/admin/`
+3. Edita visualmente
+4. Guarda y publica
+
+Ver [GUIA-CMS.md](./GUIA-CMS.md) para instrucciones detalladas.
+
+#### Opción 2: Editar JSON directamente
+
+Los archivos de contenido están en `public/content/`:
+- `calendar/day-{1-24}.json` - Contenido de cada día
+- `announcements/message-{n}.json` - Mensajes del banner
+- `settings/general.json` - Configuración general
+
+#### Ejemplo de día:
+
+```json
 {
-  type: 'letter',
-  content: {
-    title: 'Mi carta para ti',
-    text: `Querido/a [nombre],
-
-Esta es una carta especial donde puedo expresar...
-
-Con todo mi amor,
-[Tu nombre]`
+  "day": 1,
+  "type": "text",
+  "textContent": {
+    "message": "¡Bienvenido al primer día! 🎄"
   }
 }
 ```
 
-##### 3️⃣ Photo (Fotografía)
-Muestra imágenes con un marco elegante.
+### Agregar Multimedia
 
-```typescript
-{
-  type: 'photo',
-  content: {
-    url: '/imagen.jpg',  // Ruta desde la carpeta public
-    caption: 'Un momento especial juntos 📸'
-  }
-}
-```
-
-##### 4️⃣ Audio (Audio)
-Reproductor de música o grabaciones de voz.
-
-```typescript
-{
-  type: 'audio',
-  content: {
-    url: '/audio.mp3',
-    title: 'Nuestra canción',
-    description: 'Esta canción me recuerda a ti'
-  }
-}
-```
-
-##### 5️⃣ Video (Video)
-Reproduce videos de YouTube, Vimeo o archivos directos.
-
-```typescript
-{
-  type: 'video',
-  content: {
-    url: 'https://www.youtube.com/watch?v=VIDEO_ID',
-    // O para Vimeo: 'https://vimeo.com/VIDEO_ID'
-    // O archivo directo: '/video.mp4'
-    title: 'Video especial',
-    description: 'Un recuerdo en video',
-    platform: 'youtube' // 'youtube' | 'vimeo' | 'direct'
-  }
-}
-```
-
-##### 6️⃣ URL (Enlace Externo)
-Enlace a páginas web externas con descripción.
-
-```typescript
-{
-  type: 'url',
-  content: {
-    url: 'https://ejemplo.com',
-    title: 'Un regalo digital',
-    description: 'Visita este enlace para ver tu sorpresa',
-    buttonText: 'Abrir Regalo 🎁' // Texto del botón (opcional)
-  }
-}
-```
-
-##### 7️⃣ Custom (Contenido Personalizado)
-Listas de elementos con mensaje especial opcional.
-
-```typescript
-{
-  type: 'custom',
-  content: {
-    title: 'Razones por las que te amo',
-    items: [
-      '✨ Tu sonrisa ilumina mi día',
-      '💖 Tu forma de ser tan especial',
-      '🌟 Los momentos que compartimos',
-      '💕 Tu apoyo incondicional'
-    ],
-    specialMessage: '¡Y hay muchas más razones! Te amo 💝'
-  }
-}
-```
-
-### 2. Personalizar Mensajes del Banner
-
-**Opción A: Usar el CMS (Recomendado)**
-
-1. Accede a `/admin/`
-2. Selecciona "Mensajes del Banner"
-3. Edita, crea o elimina mensajes
-4. Cambia el orden usando el campo "Orden"
-
-**Opción B: Editar archivos JSON**
-
-Los mensajes se almacenan en `content/announcements/` (ejemplo: `message-1.json`, `message-2.json`, etc.).
-
-**Opción C: Editar código TypeScript**
-
-Los mensajes rotativos del banner también se pueden editar en **`src/lib/messages.ts`**:
-
-```typescript
-export const announcementMessages: string[] = [
-  '💕 ¡Bienvenida a nuestro Calendario de Adviento!',
-  '🎄 ¡Feliz Diciembre! Este mes está lleno de amor.',
-  '✨ Recuerda abrir cada día del calendario.',
-  // Agrega, edita o elimina mensajes aquí
-];
-
-// Para ocultar el banner completamente, usa un array vacío:
-// export const announcementMessages: string[] = [];
-```
-
-**Características del Banner:**
-- Rotación automática cada 8 segundos
-- Soporta emojis y texto enriquecido
-- Puntos de navegación interactivos
-- Totalmente responsive
-
-### 3. Configurar Modo Demo
-
-Por defecto, el modo demo está **activado** para permitir abrir todos los días sin esperar la fecha real. Esto es útil para pruebas.
-
-En **`src/lib/dateUtils.ts`**:
-
-```typescript
-export const canOpenDay = (day: number, year = 2025, month = 11) => {
-  // DEMO MODE: Set to true to allow all days to be opened for testing
-  const DEMO_MODE = true;  // Cambiar a false para modo producción
-  
-  if (DEMO_MODE) return true;
-  
-  // ... resto del código
-};
-```
-
-**Configuraciones:**
-- `DEMO_MODE = true`: Todos los días están disponibles (ideal para desarrollo)
-- `DEMO_MODE = false`: Los días se abren solo en su fecha correspondiente (producción)
-- El año y mes se pueden ajustar según necesidad (por defecto: Diciembre 2025)
-
-### 4. Agregar Archivos Multimedia
-
-#### Fotos y Videos
-
-1. Crea una carpeta `public/` en la raíz del proyecto si no existe
-2. Coloca tus archivos dentro de `public/`
-3. Referencialos en `calendarData.ts`:
-
-```typescript
-// Ejemplo con foto
-{
-  type: 'photo',
-  content: {
-    url: '/mi-foto.jpg',  // Archivo en public/mi-foto.jpg
-    caption: 'Descripción'
-  }
-}
-
-// Ejemplo con video local
-{
-  type: 'video',
-  content: {
-    url: '/mi-video.mp4',  // Archivo en public/mi-video.mp4
-    platform: 'direct'
-  }
-}
-```
-
-#### Audio
-
-```typescript
-{
-  type: 'audio',
-  content: {
-    url: '/cancion.mp3',  // Archivo en public/cancion.mp3
-    title: 'Título del audio'
-  }
-}
-```
-
-**Formatos Recomendados:**
-- **Imágenes**: JPG, PNG, WebP (optimizadas para web)
-- **Audio**: MP3, OGG, WAV
-- **Video**: MP4, WebM (H.264 codec)
-
-## 🎨 Personalización de Estilos
-
-### Paleta de Colores
-
-Los colores principales están definidos en **`tailwind.config.js`**. La paleta incluye tonos pasteles navideños de rosa, dorado y crema:
-
-```javascript
-colors: {
-  // Rosa pastel navideño
-  pink: {
-    primary: '#d4576d',    // Rosa principal
-    light: '#ffc4d6',      // Rosa claro
-    lighter: '#ffd4e5',    // Rosa más claro
-    lightest: '#ffe4f0',   // Rosa muy claro
-    bg: '#fff5f8',         // Fondo rosa
-    pale: '#ffeef5',       // Rosa pálido
-  },
-  // Dorado elegante
-  gold: {
-    DEFAULT: '#c9a86c',    // Dorado principal
-    light: '#ddc599',      // Dorado claro
-    lighter: '#e8d7b8',    // Dorado más claro
-    lightest: '#f2eadb',   // Dorado muy claro
-  },
-  // Crema cálido
-  'warm-cream': '#fdf8f3', // Fondo crema
-}
-```
-
-### Modificar Colores
-
-#### Opción 1: Editar la configuración de Tailwind
-
-```javascript
-// tailwind.config.js
-export default {
-  theme: {
-    extend: {
-      colors: {
-        pink: {
-          primary: '#TU_COLOR_AQUI',  // Cambia los valores hex
-          // ... otros tonos
-        }
-      }
-    }
-  }
-}
-```
-
-#### Opción 2: Usar clases de Tailwind en componentes
-
-Las clases se usan en los componentes de esta manera:
-
-```jsx
-// Ejemplo de uso en componentes
-<div className="bg-pink-primary text-white">
-<div className="text-pink-light border-gold">
-<button className="bg-gradient-to-r from-pink-primary to-gold">
-```
-
-### Animaciones Personalizadas
-
-Las animaciones están definidas en `tailwind.config.js`:
-
-```javascript
-animation: {
-  'fade-in': 'fadeIn 0.3s ease-in',
-  'slide-up': 'slideUp 0.4s ease-out',
-  'bounce-gentle': 'bounceGentle 2s infinite',
-  'twinkle': 'twinkle 2s ease-in-out infinite',
-  // ... más animaciones
-}
-```
-
-### Fuentes
-
-El proyecto usa fuentes del sistema con fallbacks elegantes:
-
-```css
-/* src/index.css */
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
-             'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
-             'Helvetica Neue', sans-serif;
-```
-
-### Gradientes de Fondo
-
-El fondo principal tiene un gradiente multicapa configurable en `Calendar.tsx`:
-
-```jsx
-<div className="min-h-screen bg-gradient-to-br from-warm-cream via-pink-bg to-gold-lightest">
-  {/* Efectos adicionales con radial-gradient */}
-</div>
-```
-
-## 🌐 Despliegue (Deployment)
-
-### Netlify (Recomendado - Con CMS Integrado)
-
-**Para usar el CMS, debes desplegar en Netlify.** El proyecto incluye configuración completa con `netlify.toml`:
+Coloca tus archivos en la carpeta `public/media/`:
 
 ```bash
-# No necesitas hacer nada especial - solo sigue estos pasos:
+public/
+  media/
+    foto.jpg
+    cancion.mp3
+    video.mp4
 ```
 
-**Pasos para desplegar:**
+Luego referencialos en el CMS o en los archivos JSON:
 
-1. **Crea una cuenta en Netlify** (GRATIS): https://app.netlify.com/signup
+```json
+{
+  "type": "photo",
+  "photoContent": {
+    "url": "/media/foto.jpg",
+    "caption": "Un momento especial"
+  }
+}
+```
 
-2. **Importa tu repositorio**:
-   - Clic en "Add new site" → "Import an existing project"
-   - Selecciona "Deploy with GitHub"
-   - Autoriza a Netlify y selecciona el repositorio `adviento-2025`
+## 🌐 Despliegue
 
-3. **Configuración de Build** (auto-detectada por `netlify.toml`):
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-   - Clic en "Deploy site"
+### Netlify (Recomendado - Con CMS)
 
-4. **Habilita Identity & Git Gateway**:
-   - Ve a Site settings → Identity → Enable Identity
-   - Ve a Services → Git Gateway → Enable Git Gateway
-   - Invítate como usuario en Identity → Invites
+**Para usar el CMS, debes desplegar en Netlify:**
 
-5. **Accede al CMS**:
-   ```
-   https://tu-sitio.netlify.app/admin/
-   ```
+1. Crea una cuenta en [Netlify](https://netlify.com) (gratis)
+2. Conecta tu repositorio de GitHub
+3. Netlify detecta automáticamente la configuración
+4. Habilita Netlify Identity y Git Gateway
+5. Accede al CMS en `https://tu-sitio.netlify.app/admin/`
 
-**Ventajas de Netlify:**
-- ✅ CMS totalmente funcional con Auth0
-- ✅ Deploy automático en cada push
-- ✅ CDN global incluido
-- ✅ SSL/HTTPS gratuito
-- ✅ Git Gateway para el CMS
-- ✅ Preview deployments
-- ✅ 100% Gratuito para proyectos personales
+**Configuración automática incluida en `netlify.toml`**
 
-**📖 [Guía completa de setup en Netlify](./SETUP-CMS.md)**
+Ver [GUIA-CMS.md](./GUIA-CMS.md) para setup completo.
 
 ### GitHub Pages (Sin CMS)
 
-Si no necesitas el CMS, puedes usar GitHub Pages:
-
 ```bash
-# 1. Compilar el proyecto
-npm run build
-
-# 2. Desplegar a GitHub Pages
 npm run deploy
 ```
 
-El sitio estará disponible en: `https://[tu-usuario].github.io/adviento-2025/`
+Sitio disponible en: `https://esteban-mrh.github.io/adviento-2025/`
 
-**Nota:** GitHub Pages no soporta el CMS porque no tiene autenticación server-side. Para usar el CMS, **debes usar Netlify**.
-
-**Configuración Existente:**
-- ✅ `gh-pages` package instalado
-- ✅ Scripts `predeploy` y `deploy` configurados
-- ✅ Homepage definido en `package.json`
-- ✅ Base path configurada para GitHub Pages
-
-### Vercel (Alternativa sin CMS)
-
-1. Crea una cuenta en [Vercel](https://vercel.com)
-2. Importa el repositorio desde GitHub
-3. Vercel detectará automáticamente la configuración de Vite
-4. Deploy automático en cada push
-
-**Configuración automática detectada:**
-- Build command: `npm run build`
-- Output directory: `dist`
-- Framework: Vite
-
-**Nota:** Vercel tampoco soporta el CMS directamente. Para CMS, usa **Netlify**.
-
-### Otras Plataformas
-
-El proyecto funciona en cualquier servicio que soporte aplicaciones estáticas:
-
-**Railway, Render, Cloudflare Pages:**
-- Build: `npm run build`
-- Output: `dist/`
-- Node version: 16+
-
-## 📱 Screenshots y Vistas
-
-### Vista Principal del Calendario
-![Calendario Principal](https://github.com/user-attachments/assets/e8c9ac3e-0286-4fbb-9d8b-28bbc82de374)
-*Diseño responsive con 24 tarjetas animadas y efectos visuales*
-
-### Modal de Texto
-![Modal de Texto](https://github.com/user-attachments/assets/3b249457-17f5-425a-87c3-89c6870ace92)
-*Mensajes cortos con animaciones suaves*
-
-### Modal de Carta
-![Modal de Carta](https://github.com/user-attachments/assets/c7069b0c-f9ca-47a7-924c-c17a3e39dfd1)
-*Cartas largas con formato elegante y título*
-
-### Modal de Lista Personalizada
-![Modal de Lista](https://github.com/user-attachments/assets/bd92d9dd-82d3-4fd5-85a1-44cce87305b9)
-*Listas con animaciones y mensaje especial*
+**Nota:** GitHub Pages no soporta el CMS. Para funcionalidad completa, usa Netlify.
 
 ## 🛠️ Stack Tecnológico
 
 ### Core
-- **[React 19](https://react.dev/)** - Framework UI moderno con las últimas características
-- **[TypeScript](https://www.typescriptlang.org/)** - Type safety y mejor experiencia de desarrollo
-- **[Vite](https://vitejs.dev/)** - Build tool ultra rápido con HMR instantáneo
+- **React 19** - Framework UI moderno
+- **TypeScript** - Type safety
+- **Vite** - Build tool ultra rápido
 
 ### Estilos y UI
-- **[Tailwind CSS 3.4](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[PostCSS](https://postcss.org/)** - Transformación de CSS
-- **[shadcn/ui](https://ui.shadcn.com/)** - Componentes UI de alta calidad
-- **[Lucide React](https://lucide.dev/)** - Iconos modernos y personalizables
-- **[class-variance-authority](https://cva.style/)** - Gestión de variantes de componentes
-- **[clsx](https://github.com/lukeed/clsx)** / **[tailwind-merge](https://github.com/dcastil/tailwind-merge)** - Utilidades para clases CSS
+- **Tailwind CSS 3.4** - Utility-first CSS
+- **shadcn/ui** - Componentes de alta calidad
+- **Lucide React** - Iconos modernos
 
-### Herramientas de Desarrollo
-- **[ESLint](https://eslint.org/)** - Linting y calidad de código
-- **[TypeScript ESLint](https://typescript-eslint.io/)** - Reglas de linting específicas para TypeScript
-- **React Hooks ESLint** - Validación de reglas de hooks
-- **React Refresh** - Hot reloading para React
+### CMS
+- **Decap CMS** - Sistema de gestión de contenidos gratuito
+- **Netlify Identity** - Autenticación con Auth0
+- **Git Gateway** - Integración con GitHub
 
-### Deployment
-- **[gh-pages](https://github.com/tschaub/gh-pages)** - Deployment automatizado a GitHub Pages
+### Herramientas
+- **ESLint** - Linting y calidad de código
+- **PostCSS** - Procesamiento CSS
+- **gh-pages** - Deployment a GitHub Pages
 
-### Características Técnicas
-
-✨ **TypeScript Strict Mode** - Máxima seguridad de tipos
-🎨 **CSS-in-JS con Tailwind** - Estilos modulares y optimizados
-🔥 **Hot Module Replacement** - Desarrollo rápido sin recargas
-📦 **Tree Shaking** - Bundle optimizado sin código no usado
-⚡ **Code Splitting** - Carga optimizada de recursos
-🎯 **Path Aliases** - Imports limpios con `@/` prefix
-
-## 🗂️ Estructura de Archivos
+## 📁 Estructura del Proyecto
 
 ```
 adviento-2025/
+├── public/
+│   ├── admin/              # CMS admin panel
+│   └── content/            # Contenido editable (JSON)
+│       ├── calendar/       # Días del calendario
+│       ├── announcements/  # Mensajes del banner
+│       └── settings/       # Configuración general
 ├── src/
 │   ├── components/
-│   │   ├── calendar/
-│   │   │   ├── Calendar.tsx      # Componente principal del calendario
-│   │   │   ├── DayCard.tsx       # Tarjeta individual de día
-│   │   │   └── index.ts
-│   │   ├── modal/
-│   │   │   ├── Modal.tsx         # Modal con animaciones
-│   │   │   ├── OpeningAnimations.tsx  # Animaciones de apertura
-│   │   │   ├── content/          # Componentes de contenido
-│   │   │   │   ├── TextContent.tsx
-│   │   │   │   ├── LetterContent.tsx
-│   │   │   │   ├── PhotoContent.tsx
-│   │   │   │   ├── AudioContent.tsx
-│   │   │   │   ├── VideoContent.tsx
-│   │   │   │   ├── URLContent.tsx
-│   │   │   │   ├── CustomContent.tsx
-│   │   │   │   └── index.ts
-│   │   │   └── index.ts
-│   │   ├── common/               # Componentes comunes
-│   │   │   ├── AnnouncementBanner.tsx  # Banner rotativo
-│   │   │   ├── Countdown.tsx     # Cuenta regresiva
-│   │   │   ├── Icons.tsx         # Iconos personalizados
-│   │   │   └── index.ts
-│   │   └── ui/                   # Componentes shadcn/ui
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── badge.tsx
-│   │       └── dialog.tsx
+│   │   ├── calendar/       # Componentes del calendario
+│   │   ├── modal/          # Sistema de modales
+│   │   ├── common/         # Componentes comunes
+│   │   └── ui/             # Componentes shadcn/ui
 │   ├── lib/
-│   │   ├── calendarData.ts       # ⚙️ Configuración de contenido por día
-│   │   ├── messages.ts           # ⚙️ Mensajes del banner
-│   │   ├── dateUtils.ts          # ⚙️ Utilidades de fecha y demo mode
-│   │   └── utils.ts              # Funciones auxiliares
-│   ├── types/
-│   │   └── calendar.ts           # Definiciones de tipos TypeScript
-│   ├── App.tsx                   # Componente raíz
-│   ├── main.tsx                  # Entry point
-│   └── index.css                 # Estilos globales
-├── public/                       # 📁 Coloca aquí fotos, audio, videos
-├── dist/                         # Build de producción (generado)
-├── index.html                    # HTML template
-├── package.json                  # Dependencias y scripts
-├── tsconfig.json                 # Configuración TypeScript
-├── tailwind.config.js            # Configuración Tailwind
-├── postcss.config.js             # Configuración PostCSS
-├── vite.config.js                # Configuración Vite
-├── eslint.config.js              # Configuración ESLint
-├── components.json               # Configuración shadcn/ui
-└── README.md                     # Este archivo
-
-⚙️ = Archivos principales para personalización
-📁 = Carpeta para tus archivos multimedia
+│   │   ├── contentLoader.ts    # Carga de contenido JSON
+│   │   ├── dateUtils.ts        # Utilidades de fecha
+│   │   └── utils.ts            # Funciones auxiliares
+│   └── types/
+│       └── calendar.ts     # Tipos TypeScript
+├── GUIA-CMS.md            # Guía del CMS en español
+├── README.md              # Este archivo
+└── package.json           # Dependencias y scripts
 ```
 
 ## 🎓 Cómo Funciona
 
-### Flujo de Datos
+1. **Carga de Datos**: `contentLoader.ts` lee archivos JSON desde `public/content/`
+2. **Renderizado**: `Calendar.tsx` genera las 24 tarjetas desde los datos
+3. **Validación**: `dateUtils.ts` verifica si un día puede abrirse
+4. **Visualización**: `Modal.tsx` muestra el contenido con animaciones
+5. **CMS**: Decap CMS edita los archivos JSON y hace commits via Git Gateway
 
-1. **Configuración** → `calendarData.ts` define el contenido de cada día
-2. **Renderizado** → `Calendar.tsx` genera las 24 tarjetas desde los datos
-3. **Interacción** → Usuario hace clic en un día disponible
-4. **Validación** → `dateUtils.ts` verifica si el día puede abrirse
-5. **Visualización** → `Modal.tsx` muestra el contenido con animaciones
-6. **Contenido** → Componente específico renderiza según el tipo
+## 🎨 Personalización de Estilos
 
-### Control de Acceso
+Los colores principales están en `tailwind.config.js`:
 
-```typescript
-// dateUtils.ts
-export const canOpenDay = (day: number) => {
-  const DEMO_MODE = true; // Controla el acceso
-  
-  if (DEMO_MODE) return true;
-  
-  const now = new Date();
-  const targetDate = new Date(2025, 11, day); // 11 = Diciembre
-  
-  return now >= targetDate;
-};
-```
-
-### Sistema de Tipos
-
-TypeScript asegura que el contenido esté correctamente tipado:
-
-```typescript
-// calendar.ts
-export type ContentType = 
-  | 'text' 
-  | 'letter' 
-  | 'photo' 
-  | 'audio' 
-  | 'video' 
-  | 'url' 
-  | 'custom';
-
-export interface DayContent {
-  type: ContentType;
-  content: TextContent | LetterContent | PhotoContent | ...;
+```javascript
+colors: {
+  pink: {
+    primary: '#d4576d',
+    light: '#ffc4d6',
+    // ...
+  },
+  gold: {
+    DEFAULT: '#c9a86c',
+    // ...
+  }
 }
 ```
 
-## 🤝 Contribuir
+Las animaciones también están definidas en el mismo archivo.
 
-¿Tienes ideas para mejorar el calendario? ¡Las contribuciones son bienvenidas!
-
-### Cómo Contribuir
-
-1. **Fork** el repositorio
-2. Crea una **rama** para tu feature (`git checkout -b feature/nueva-funcionalidad`)
-3. **Commit** tus cambios (`git commit -m 'Añadir nueva funcionalidad'`)
-4. **Push** a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Abre un **Pull Request**
-
-### Ideas de Mejoras
-
-- 🎵 Más tipos de contenido (podcast, playlist, etc.)
-- 🌍 Internacionalización (i18n)
-- 🎨 Temas personalizables (oscuro/claro)
-- 💾 Persistencia local del progreso
-- 🔔 Notificaciones de nuevos días
-- 📊 Estadísticas de días abiertos
-- 🎁 Sistema de logros o recompensas
-
-## 🐛 Reportar Problemas
-
-Si encuentras algún bug o tienes una sugerencia:
-
-1. Verifica que el problema no esté ya reportado en [Issues](https://github.com/esteban-mrh/adviento-2025/issues)
-2. Crea un nuevo issue con:
-   - Descripción clara del problema
-   - Pasos para reproducirlo
-   - Screenshots si es aplicable
-   - Información del navegador/dispositivo
-
-## 📚 Recursos Adicionales
-
-### Documentación de Tecnologías
-- [React 19 Docs](https://react.dev/)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
-- [Vite Guide](https://vitejs.dev/guide/)
-- [shadcn/ui Components](https://ui.shadcn.com/)
-- [Decap CMS Documentation](https://decapcms.org/docs/) - Sistema de gestión de contenidos
-
-### Tutoriales Relacionados
-- [Aprende React](https://react.dev/learn)
-- [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-- [Tailwind CSS Tutorial](https://tailwindcss.com/docs/utility-first)
-
-### Inspiración de Diseño
-- [Dribbble - Advent Calendar](https://dribbble.com/search/advent-calendar)
-- [Pinterest - Christmas UI](https://www.pinterest.com/search/pins/?q=christmas%20ui)
-
-## ❓ FAQ (Preguntas Frecuentes)
-
-### ¿Puedo usar esto para mi propia pareja/familia?
-
-¡Absolutamente! El proyecto está licenciado bajo MIT, lo que significa que puedes usarlo, modificarlo y distribuirlo libremente. Solo recuerda mantener la atribución.
+## ❓ FAQ
 
 ### ¿Cómo cambio el año del calendario?
 
-En `src/lib/dateUtils.ts`, modifica el parámetro `year` (por ejemplo, para usar en 2026):
+Edita `public/content/settings/general.json`:
 
-```typescript
-export const canOpenDay = (day: number, year = 2026, month = 11) => {
-  // Cambia 2025 por el año que necesites
-};
+```json
+{
+  "year": 2026,
+  "month": 11
+}
 ```
 
-También actualiza el título en `index.html` y otros lugares donde aparezca el año.
-
-### ¿Puedo tener más o menos de 24 días?
+### ¿Puedo usar más de 24 días?
 
 Sí, modifica el array en `Calendar.tsx`:
 
 ```typescript
-// Para 31 días (todo diciembre):
 const days = Array.from({ length: 31 }, (_, i) => i + 1);
-
-// Para 12 días:
-const days = Array.from({ length: 12 }, (_, i) => i + 1);
 ```
 
-Y agrega/quita días en `calendarData.ts`.
+Y crea los archivos JSON correspondientes.
 
-### ¿Cómo optimizo las imágenes?
+### ¿Cómo funciona el CMS?
 
-Usa herramientas de compresión:
-- [TinyPNG](https://tinypng.com/) - Compresión PNG/JPG
-- [Squoosh](https://squoosh.app/) - Compresión avanzada
-- [ImageOptim](https://imageoptim.com/) - App de escritorio
+El CMS usa Decap CMS + Netlify Identity + Git Gateway para editar contenido sin código:
+1. Editas en la interfaz web
+2. El CMS crea un commit en GitHub
+3. Netlify despliega automáticamente
 
-### ¿Cómo uso el CMS para editar contenido?
-
-¡Este proyecto ya incluye un CMS integrado! **Decap CMS** te permite editar todo el contenido sin tocar código:
-
-1. **Despliega en Netlify** (es GRATIS y necesario para el CMS)
-2. Configura Identity y Git Gateway en Netlify
-3. Accede a `/admin/` en tu sitio de Netlify
-4. Haz login con Netlify Identity (usa Auth0 internamente)
-5. Edita contenido visualmente
-
-**📖 [Lee la Guía Completa del CMS](./GUIA-CMS.md)** y **[Setup en Netlify](./SETUP-CMS.md)** para instrucciones detalladas.
-
-**¿Por qué Netlify?**
-- Netlify Identity (con Auth0) es gratuito y fácil de configurar
-- Git Gateway permite al CMS hacer commits automáticamente
-- No necesitas configurar OAuth manualmente
-- La antigua Netlify Identity está deprecada, ahora usa Auth0 moderno
+Ver [GUIA-CMS.md](./GUIA-CMS.md) para más detalles.
 
 ### ¿Puedo usar GitHub Pages con el CMS?
 
-No directamente. GitHub Pages es hosting estático y el CMS requiere autenticación server-side. **Debes usar Netlify** para el CMS. Sin embargo, tu código sigue en GitHub y el CMS hace commits a tu repositorio.
+No directamente. GitHub Pages es hosting estático y el CMS requiere autenticación server-side. **Usa Netlify** para el CMS (es gratis).
 
-### ¿Funciona offline?
+## 🤝 Contribuir
 
-Actualmente no, pero podrías agregar un Service Worker con Workbox para soporte PWA offline.
+Las contribuciones son bienvenidas:
+
+1. Fork el repositorio
+2. Crea una rama (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -m 'Añadir nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
 
-### Lo que puedes hacer:
-✅ Uso comercial  
-✅ Modificación  
-✅ Distribución  
-✅ Uso privado  
+**Permisos:**
+- ✅ Uso comercial
+- ✅ Modificación
+- ✅ Distribución
+- ✅ Uso privado
 
-### Condiciones:
-📝 Mantener la atribución y licencia  
-⚠️ Sin garantía  
+**Condiciones:**
+- 📝 Mantener atribución y licencia
+- ⚠️ Sin garantía
 
 ## 💝 Agradecimientos
 
 - Inspirado en la tradición de calendarios de adviento navideños
-- Diseño basado en paletas pasteles navideñas
+- Diseño basado en paletas pasteles festivas
 - Construido con amor para Navidad 2025 🎄
 
 ## 👨‍💻 Autor
@@ -904,5 +337,9 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 Hecho con 💖 para compartir momentos especiales
 
 🎄 **¡Feliz Navidad 2025!** ✨
+
+---
+
+*Desarrollado con la ayuda de **GitHub Copilot** - Tu compañero de programación con IA* 🤖✨
 
 </div>

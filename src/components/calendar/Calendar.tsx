@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import DayCard from './DayCard';
 import { Modal } from '../modal';
 import { AnnouncementBanner, Countdown } from '../common';
 import { canOpenDay } from '../../lib/dateUtils';
-import { loadCalendarData } from '@/lib/contentLoader';
+import { loadCalendarData, loadGeneralSettings, type GeneralSettings } from '@/lib/contentLoader';
 import type { CalendarData } from '@/types/calendar';
 import { cn } from '@/lib/utils';
 
@@ -12,15 +12,20 @@ const Calendar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonPosition, setButtonPosition] = useState<{ x: number; y: number } | null>(null);
   const [calendarData, setCalendarData] = useState<CalendarData>({});
+  const [settings, setSettings] = useState<GeneralSettings | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
-  // Load calendar data from JSON files
+  // Load calendar data and settings from JSON files
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await loadCalendarData();
+        const [data, generalSettings] = await Promise.all([
+          loadCalendarData(),
+          loadGeneralSettings()
+        ]);
         setCalendarData(data);
+        setSettings(generalSettings);
       } catch (error) {
         console.error('Failed to load calendar data:', error);
       } finally {
@@ -31,8 +36,15 @@ const Calendar = () => {
     loadData();
   }, []);
 
+  // Memoize calendar settings to avoid recalculating on every render
+  const calendarSettings = useMemo(() => ({
+    year: settings?.year ?? 2025,
+    month: settings?.month ?? 11,
+    demoMode: settings?.demoMode ?? false,
+  }), [settings]);
+
   const handleDayClick = (day: number) => {
-    if (canOpenDay(day)) {
+    if (canOpenDay(day, calendarSettings.year, calendarSettings.month, calendarSettings.demoMode)) {
       const cardElement = cardRefs.current[day];
       if (cardElement) {
         const rect = cardElement.getBoundingClientRect();
@@ -131,7 +143,7 @@ const Calendar = () => {
           >
             <DayCard
               day={day}
-              canOpen={canOpenDay(day)}
+              canOpen={canOpenDay(day, calendarSettings.year, calendarSettings.month, calendarSettings.demoMode)}
               onClick={() => handleDayClick(day)}
             />
           </div>
