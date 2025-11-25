@@ -86,14 +86,14 @@ const Countdown = (): JSX.Element | null => {
           {/* Header */}
           <div className="text-center mb-6">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <SparkleIcon className="w-5 h-5 text-gold animate-sparkle" />
+              <SparkleIcon className="w-5 h-5 text-gold"/>
               <h2 className={cn(
                 'text-lg sm:text-xl md:text-2xl font-bold',
                 'bg-gradient-to-r from-pink-primary to-gold-dark bg-clip-text text-transparent'
               )}>
                 ¡Cuenta regresiva!
               </h2>
-              <SparkleIcon className="w-5 h-5 text-gold animate-twinkle" />
+              <SparkleIcon className="w-5 h-5 text-gold" />
             </div>
             <p className="text-sm sm:text-base text-pink-primary/70">
               Tiempo restante para empezar el calendario de Adviento

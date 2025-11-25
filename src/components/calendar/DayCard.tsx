@@ -1,4 +1,4 @@
-import { LockIcon, SparkleIcon, HeartIcon } from '../common';
+import { LockIcon, KeyIcon, HeartIcon } from '../common';
 import { Card } from '../ui/card';
 import { cn } from '@/lib/utils';
 
@@ -55,7 +55,7 @@ const DayCard = ({ day, canOpen, onClick }: DayCardProps) => {
         ) : isSpecialDay ? (
           <HeartIcon className="w-7 h-7 text-pink-primary animate-heartbeat" />
         ) : (
-          <SparkleIcon className="w-6 h-6 text-gold animate-sparkle" />
+          <KeyIcon className="w-6 h-6 text-gold animate-sparkle" />
         )}
       </div>
 
@@ -66,7 +66,7 @@ const DayCard = ({ day, canOpen, onClick }: DayCardProps) => {
             {isSpecialDay ? (
               <HeartIcon className="w-6 h-6" />
             ) : (
-              <SparkleIcon className="w-6 h-6" />
+              <KeyIcon className="w-6 h-6" />
             )}
             <span className="text-sm font-semibold">Abrir</span>
           </div>

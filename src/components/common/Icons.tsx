@@ -7,7 +7,8 @@ import {
   Star,
   PartyPopper,
   Calendar as CalendarIcon,
-  Check
+  Check,
+  Key
 } from 'lucide-react';
 
 export const LockIcon = Lock;
@@ -18,4 +19,5 @@ export const StarIcon = Star;
 export const CelebrationIcon = PartyPopper;
 export const CalendarDayIcon = CalendarIcon;
 export const CheckIcon = Check;
+export const KeyIcon = Key;
 

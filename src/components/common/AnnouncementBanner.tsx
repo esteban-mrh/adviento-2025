@@ -1,6 +1,6 @@
 import { useState, useEffect, JSX } from 'react';
 import { announcementMessages } from '../../lib/messages';
-import { Megaphone } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { Card } from '../ui/card';
 import { cn } from '@/lib/utils';
 
@@ -39,7 +39,7 @@ const AnnouncementBanner = (): JSX.Element | null => {
             {/* Icon */}
             <div className="flex-shrink-0 mt-0.5">
               <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-pink-light/30 to-gold-light/30 flex items-center justify-center">
-                <Megaphone className="w-5 h-5 md:w-6 md:h-6 text-pink-primary" />
+                <Heart className="w-5 h-5 md:w-6 md:h-6 text-pink-primary" />
               </div>
             </div>
 
