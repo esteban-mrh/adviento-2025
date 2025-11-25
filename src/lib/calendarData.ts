@@ -17,21 +17,24 @@ export const calendarData: CalendarData = {
   1: {
     type: 'text',
     content: {
-      message: '¡Bienvenida a nuestro Calendario de Adviento! 🎄✨\n\nCada día tiene una sorpresa especial para ti. ¡Te amo!'
+      message: '¡Bienvenido sea Diciembre! 🎄✨\n\nNo tuve mucha creatividad para el primer día, pero quise darte igual un pequeño detalle con el cual empezar el mes. ¡Te amo!'
     }
   },
   2: {
     type: 'letter',
     content: {
-      title: 'Una Carta Para Ti',
+      title: 'Primera carta del mes',
       text: `Mi amor,
 
-Cada día contigo es un regalo. Este diciembre quiero celebrar lo especial que eres para mí.
+Desde que te conocí, todos los días han sido más bonitos junto a ti. Apesar de las discuciones y diferencias que podamos tener
+cada minuto contigo es el más hermoso para mi corazón, hoy como todos los días, te recuerdo con muchisisisimo cariño que tu,
 
-Eres mi inspiración, mi alegría, y la razón por la que sonrío cada día.
+Eres mi inspiración, mi alegría, y la razón por la que sonrío todos y cada uno de mis días.
+
+Y hoy faltando muy poco para acabar el año, y siendo nuestra primera navidad juntos, ojalá, esta solo sea la primera de muchas más.
 
 Con todo mi amor,
-Tu admirador secreto 💕`
+Esteban💕`
     }
   },
   3: {
