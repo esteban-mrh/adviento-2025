@@ -8,14 +8,15 @@
     "url": "asd"
   },
   "customContent": {
-    "items": []
+    "items": [],
+    "title": "a"
   },
   "urlContent": {
     "url": "asd.com",
     "title": "asd"
   },
   "textContent": {
-    "message": "¡Bienvenido sea Diciembre! 🎄✨\n\nNo tuve mucha creatividad para el primer día okey? Espero que este mini calendario de adviento hecho con mucho amor, te alegre un momento al día, que te motive y te ayude en todo lo que hagas :p. Voy a intentar cambiar las cosas que te pongo en los diferentes días, con todo había programado un webo de opciones para poner, lo que me falta es creatividad.  En fin, a lo que vinimos: Hoy, empieza el último mes del año, y... lo empiezo junto a la persona más especial de mi vida, de mi mundo y todo mi corazón, tú. Y se que aveces no parece como lo digo, pero el hecho de saber que estamos a 31 días de acabar el año, y a 25 de nuestra primera navidad juntos, lo hace muy especial. Es un sentimiento hermoso, mi corazón se siente calentito pensando que este mes lo pasaremos juntosss. Te amooooo, y asi empieza este calendario de adviento 💖. Con la canción que siempre se me viene la cabeza cuando te junto a ti + Navidad."
+    "message": "\na"
   },
   "letterContent": {
     "title": ".",
@@ -26,7 +27,7 @@
   "videoContent": {
     "url": "https://youtu.be/aAkMkVFwAoo?si=HY1nF06cTmKnJcdD",
     "platform": "youtube",
-    "description": "",
-    "title": ""
+    "description": "No tuve mucha creatividad para el primer día okey? Espero que este mini calendario de adviento hecho con mucho amor, te alegre un momento al día, que te motive y te ayude en todo lo que hagas :p. Voy a intentar cambiar las cosas que te pongo en los diferentes días, con todo había programado un webo de opciones para poner, lo que me falta es creatividad.  En fin, a lo que vinimos: Hoy, empieza el último mes del año, y... lo empiezo junto a la persona más especial de mi vida, de mi mundo y todo mi corazón, tú. Y se que aveces no parece como lo digo, pero el hecho de saber que estamos a 31 días de acabar el año, y a 25 de nuestra primera navidad juntos, lo hace muy especial. Es un sentimiento hermoso, mi corazón se siente calentito pensando que este mes lo pasaremos juntosss. Te amooooo, y asi empieza este calendario de adviento 💖. Con la canción que siempre se me viene la cabeza cuando te junto a ti + Navidad.",
+    "title": "¡Bienvenido sea Diciembre! 🎄✨"
   }
 }
