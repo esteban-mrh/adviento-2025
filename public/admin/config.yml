@@ -32,56 +32,56 @@ collections:
       - label: "Contenido de Texto"
         name: "textContent"
         widget: "object"
-        condition:
-          field: type
-          value: text
+        collapsed: true
+        required: false
+        condition: { field: "type", value: "text" }
         fields:
-          - { label: "Mensaje", name: "message", widget: "text" }
+          - { label: "Mensaje", name: "message", widget: "text", required: false }
       
       # Letter content fields
       - label: "Contenido de Carta"
         name: "letterContent"
         widget: "object"
-        condition:
-          field: type
-          value: letter
+        collapsed: true
+        required: false
+        condition: { field: "type", value: "letter" }
         fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Texto", name: "text", widget: "markdown" }
+          - { label: "Título", name: "title", widget: "string", required: false }
+          - { label: "Texto", name: "text", widget: "markdown", required: false }
       
       # Photo content fields
       - label: "Contenido de Foto"
         name: "photoContent"
         widget: "object"
-        condition:
-          field: type
-          value: photo
+        collapsed: true
+        required: false
+        condition: { field: "type", value: "photo" }
         fields:
-          - { label: "Imagen", name: "url", widget: "image" }
+          - { label: "Imagen", name: "url", widget: "image", required: false }
           - { label: "Descripción", name: "caption", widget: "string", required: false }
       
       # Audio content fields
       - label: "Contenido de Audio"
         name: "audioContent"
         widget: "object"
-        condition:
-          field: type
-          value: audio
+        collapsed: true
+        required: false
+        condition: { field: "type", value: "audio" }
         fields:
-          - { label: "Archivo de Audio", name: "url", widget: "file" }
-          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Archivo de Audio", name: "url", widget: "file", required: false }
+          - { label: "Título", name: "title", widget: "string", required: false }
           - { label: "Descripción", name: "description", widget: "string", required: false }
       
       # Video content fields
       - label: "Contenido de Video"
         name: "videoContent"
         widget: "object"
-        condition:
-          field: type
-          value: video
+        collapsed: true
+        required: false
+        condition: { field: "type", value: "video" }
         fields:
-          - { label: "URL del Video", name: "url", widget: "string" }
-          - { label: "Plataforma", name: "platform", widget: "select", options: ["youtube", "vimeo", "direct"] }
+          - { label: "URL del Video", name: "url", widget: "string", required: false }
+          - { label: "Plataforma", name: "platform", widget: "select", options: ["youtube", "vimeo", "direct"], required: false }
           - { label: "Título", name: "title", widget: "string", required: false }
           - { label: "Descripción", name: "description", widget: "string", required: false }
       
@@ -89,12 +89,12 @@ collections:
       - label: "Contenido de URL"
         name: "urlContent"
         widget: "object"
-        condition:
-          field: type
-          value: url
+        collapsed: true
+        required: false
+        condition: { field: "type", value: "url" }
         fields:
-          - { label: "URL", name: "url", widget: "string" }
-          - { label: "Título", name: "title", widget: "string" }
+          - { label: "URL", name: "url", widget: "string", required: false }
+          - { label: "Título", name: "title", widget: "string", required: false }
           - { label: "Descripción", name: "description", widget: "string", required: false }
           - { label: "Texto del Botón", name: "buttonText", widget: "string", required: false, default: "Visitar enlace" }
       
@@ -102,15 +102,16 @@ collections:
       - label: "Contenido Personalizado"
         name: "customContent"
         widget: "object"
-        condition:
-          field: type
-          value: custom
+        collapsed: true
+        required: false
+        condition: { field: "type", value: "custom" }
         fields:
-          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Título", name: "title", widget: "string", required: false }
           - label: "Elementos"
             name: "items"
             widget: "list"
-            field: { label: "Elemento", name: "item", widget: "string" }
+            required: false
+            field: { label: "Elemento", name: "item", widget: "string", required: false }
           - { label: "Mensaje Especial", name: "specialMessage", widget: "text", required: false }
 
   # Announcement Messages Collection
