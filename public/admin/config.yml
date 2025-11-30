@@ -111,7 +111,7 @@ collections:
             name: "items"
             widget: "list"
             required: false
-            field: { label: "Elemento", name: "item", widget: "string" }
+            field: { label: "Elemento", name: "item", widget: "string", required: false }
           - { label: "Mensaje Especial", name: "specialMessage", widget: "text", required: false }
 
   # Announcement Messages Collection
