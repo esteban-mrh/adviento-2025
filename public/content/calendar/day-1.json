@@ -1,26 +1,26 @@
 {
   "audioContent": {
-    "url": "asd",
-    "title": "a"
+    "url": "",
+    "title": ""
   },
   "photoContent": {
     "caption": "",
-    "url": "asd"
+    "url": ""
   },
   "customContent": {
     "items": [],
-    "title": "a"
+    "title": ""
   },
   "urlContent": {
-    "url": "asd.com",
-    "title": "asd"
+    "url": "",
+    "title": ""
   },
   "textContent": {
-    "message": "\na"
+    "message": ""
   },
   "letterContent": {
-    "title": ".",
-    "text": "."
+    "title": "",
+    "text": ""
   },
   "type": "video",
   "day": 1,
