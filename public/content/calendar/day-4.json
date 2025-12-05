@@ -1,7 +1,19 @@
 {
   "day": 4,
-  "type": "text",
+  "type": "custom",
   "textContent": {
-    "message": "💝 Razón #1 por la que te amo:\n\nTu sonrisa ilumina mi mundo"
+    "message": ""
+  },
+  "customContent": {
+    "items": [
+      "💕 Razón #1 por la que te amo: Un mensaje tuyo basta para mejorar mi día ",
+      "❤️ Razón #2 por la que te amo: Eres mi razón de ser y de hacer las cosas",
+      "💓 Razón #3 por la que te amo: Porque apesar de todo se que estaremos juntos siempre",
+      "💘 Razón #27 por la que te amo: Porque la vida contigo se siente como un flechazo todos los días te amo más ",
+      "💞 Razón #678 por la que te amo: Porque apesar de no vernos todos los días, siempre te siento junto a mi",
+      "💖 Razón #1403 por la que te amo: Porque llegaste y me demostraste que si se puede amar de forma bonita, y que si se puede tener una relación linda",
+      "❣️ Razón #2026 por la que te amo: Porque eres la mejor novia que puede existir en el planeta, eres lo mejor y lo más lindo del mundo para mi"
+    ],
+    "specialMessage": "Razones por las que te amo mi princesita 💞💖❤️❣️"
   }
 }
